@@ -1,0 +1,3 @@
+export const forecastDataConstance = {
+    GET_CURRENT_LOCATION_FORECAST: "GET_CURRENT_LOCATION_FORECAST"
+}
