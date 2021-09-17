@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import forecastData from './forecast-data/reducer'
 
-export const rootReducer: any = combineReducers({
+export const rootReducer = combineReducers({
   forecastData: forecastData
 })
 

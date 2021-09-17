@@ -1,22 +1,19 @@
 import { forecastDataConstance } from "../store/forecast-data/types";
+import { Action as ReduxAction } from "redux";
 
-export interface IForecastInitialState {
-    forecastData: IForecastData
+export interface ForecastInitialState {
+    forecastData: ForecastData
 }
 
-export interface IForecastData {
+export interface ForecastData {
     title: string,
-    consolidated_weather: IConsolidatedWeather[]
+    consolidated_weather: ConsolidatedWeather[]
 }
 
-export interface IConsolidatedWeather {
+export interface ConsolidatedWeather {
     weather_state_name: string,
     applicable_date: string,
     the_temp: number
 }
 
-export interface IGetForecast {
-    type: typeof forecastDataConstance.GET_CURRENT_LOCATION_FORECAST
-    payload: IForecastData
-
-}
+export interface SetForecast extends ReduxAction { type: typeof forecastDataConstance.SET_CURRENT_LOCATION_FORECAST, payload: ForecastData; }

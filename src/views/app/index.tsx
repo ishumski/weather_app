@@ -4,7 +4,7 @@ import Sidebar from '../../components/sidebar'
 
 const AppContainer: any = styled.div`
   display: flex;
-  height: 100%;
+  height: 100vh;
 `
 const App: React.FC = (): JSX.Element => {
   return (

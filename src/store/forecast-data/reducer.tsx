@@ -1,7 +1,7 @@
-import { IForecastInitialState, IGetForecast } from '../../types/interfaces'
+import { ForecastInitialState, SetForecast } from '../../types/interfaces'
 import { forecastDataConstance } from './types'
 
-const initialState: IForecastInitialState = {
+const initialState: ForecastInitialState = {
   forecastData: {
     title: '',
     consolidated_weather: [
@@ -15,11 +15,11 @@ const initialState: IForecastInitialState = {
 }
 
 export default (
-  state: IForecastInitialState = initialState,
-  action: IGetForecast
+  state: ForecastInitialState = initialState,
+  action: SetForecast
 ): any => {
   switch (action.type) {
-    case forecastDataConstance.GET_CURRENT_LOCATION_FORECAST:
+    case forecastDataConstance.SET_CURRENT_LOCATION_FORECAST:
       return {
         ...state,
         forecastData: action.payload

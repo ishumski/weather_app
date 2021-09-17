@@ -2,90 +2,83 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store/root-reducer'
-import { getForecast } from '../../store/action'
 import { getCurrentLocationForecast } from '../../api'
+import {
+  ConsolidatedWeather,
+  ForecastData,
+  ForecastInitialState
+} from '../../types/interfaces'
+import ShowCurrentDate from '../show-current-date'
 
 import ShowerIcon from '../../assets/images/shower.png'
 import CloudIcon from '../../assets/images/cloudy.png'
+import GeopositionIcon from '../../assets/images/geoposition.svg'
+import CelsiusIcon from '../../assets/images/celsius.svg'
+import LocationIcon from '../../assets/images/location.svg'
+import Dot from '../../assets/images/dot.svg'
 
 import {
   SidebarContaner,
   Header,
   SearchButton,
-  GeolocationButton,
+  GeopositionBadge,
   Body,
   SmallCloud,
   MediumCloudRight,
   MediumCloudLeft,
   LargeCloud,
-  WeatherIcon,
   Temperature,
-  TemperatureUnit,
   WeatherStateName,
   Footer,
   CurrentDate,
+  DotIcon,
   Location,
-  VectorIcon,
-  CurrentLocation
+  LocationTitle
 } from './style'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
 
-  useEffect((): any => {
-    currentLocationForecast()
+  useEffect((): void => {
+    dispatch(getCurrentLocationForecast())
   }, [])
 
-  const { forecastData } = useSelector((state: RootState) => state.forecastData)
-  const { title, consolidated_weather } = forecastData
-  const { weather_state_name, applicable_date, the_temp } =
+  const { forecastData }: ForecastInitialState = useSelector(
+    (state: RootState) => state.forecastData
+  )
+  const { title, consolidated_weather }: ForecastData = forecastData
+  const { weather_state_name, the_temp }: ConsolidatedWeather =
     consolidated_weather[0]
 
   const fixedTemp: number = parseFloat(the_temp.toFixed(1))
 
-  const currentLocationForecast = (): any => {
-    getCurrentLocationForecast().then((data: any) => {
-      dispatch(getForecast(data))
-    })
-  }
-
   return (
     <SidebarContaner>
       <Header>
-        <SearchButton>Search for place</SearchButton>
-        <GeolocationButton>O</GeolocationButton>
+        <SearchButton buttonLabel="Search for places"></SearchButton>
+        <GeopositionBadge icon={GeopositionIcon}></GeopositionBadge>
       </Header>
       <Body>
-        <SmallCloud
-          width="147px"
-          height="109px"
-          src={CloudIcon}
-          alt="small-cloud-icon"
-        />
+        <SmallCloud src={CloudIcon} alt="small-cloud-icon" />
         <MediumCloudRight src={CloudIcon} alt="medium-cloud-icon" />
         <MediumCloudLeft src={CloudIcon} alt="medium-cloud-icon" />
-        <LargeCloud
-          width="248px"
-          height="183px"
-          src={CloudIcon}
-          alt="large-cloud-icon"
-        />
-        <WeatherIcon src={ShowerIcon} alt="weather-icon" />
+        <LargeCloud src={CloudIcon} alt="large-cloud-icon" />
+        <img src={ShowerIcon} alt="weather-icon" />
         <Temperature>
           {fixedTemp}
-          <TemperatureUnit>С</TemperatureUnit>
+          <img src={CelsiusIcon} alt="celsius-icon" />
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>
       </Body>
       <Footer>
         <CurrentDate>
           <p>Today</p>
-          <span>.</span>
-          <p>{applicable_date}</p>
+          <DotIcon src={Dot} alt="dot-icon" />
+          <ShowCurrentDate />
         </CurrentDate>
         <Location>
-          <VectorIcon src="" alt="" />
-          <CurrentLocation>{title}</CurrentLocation>
+          <img src={LocationIcon} alt="location-icon" />
+          <LocationTitle>{title}</LocationTitle>
         </Location>
       </Footer>
     </SidebarContaner>

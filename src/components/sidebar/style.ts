@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const SidebarContaner: any = styled.div`
+import Badge from "../../common/badge";
+import Button from "../../common/button";
+
+export const SidebarContaner = styled.div`
   flex: 0.3;
   background-color: #1e213a;
   color: #ffffff;
@@ -11,19 +14,19 @@ export const SidebarContaner: any = styled.div`
   position: relative;
 `
 
-export const Header: any = styled.div`
+export const Header = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-export const SearchButton: any = styled.button`
+export const SearchButton = styled(Button)`
   width: 161px;
   height: 40px;
   background: #6e707a;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: #e7e7eb;
+  color: #E7E7EB;
   border: none;
   cursor: pointer;
   font-family: Raleway;
@@ -32,76 +35,70 @@ export const SearchButton: any = styled.button`
   font-size: 16px;
 `
 
-export const GeolocationButton: any = styled.button`
+export const GeopositionBadge = styled(Badge)`
   border-radius: 50px;
   width: 40px;
   height: 40px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   border: none;
   cursor: pointer;
-  color: #e7e7eb;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #E7E7EB;
+  background: #6e707a;
 `
 
-export const Body: any = styled.div`
-  margin-top: 109px;
+export const Body = styled.div`
+  margin-top: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 
-export const SmallCloud: any = styled.img`
+export const SmallCloud = styled.img`
   position: absolute;
   opacity: 0.1;
   top: 370px;
   right: -11px;
-  width: ${(p: any) => p.width};
-  height: ${(p: any) => p.height};
-
+  width: 147px;
+  height: 109px;
 `
 
-export const MediumCloudRight: any = styled.img`
+export const MediumCloudRight = styled.img`
   position: absolute;
   opacity: 0.1;
   top: 116px;
   right: -80px;
 `
 
-export const MediumCloudLeft: any = styled.img`
+export const MediumCloudLeft = styled.img`
   position: absolute;
   opacity: 0.1;
   top: 103px;
   left: -89px;
 `
 
-export const LargeCloud: any = styled.img`
+export const LargeCloud = styled.img`
   position: absolute;
   opacity: 0.1;
   top: 266px;
   left: -111px;
-  width: ${(p: any) => p.width};
-  height: ${(p: any) => p.height};
+  width: 248px;
+  height: 183px;
+ 
 `
 
-export const WeatherIcon: any = styled.img``
-
-export const Temperature: any = styled.p`
+export const Temperature = styled.div`
   width: 100%;
-  margin-top: 87px;
+  margin-top: 80px;
   margin-bottom: 0;
   font-family: Raleway;
   font-weight: 600;
   font-size: 144px;
-  display: flex;
-  align-items: baseline;
 `
 
-export const TemperatureUnit: any = styled.span`
-  font-size: 70px;
-`
-
-export const WeatherStateName: any = styled.h3`
-  margin-top: 87px;
+export const WeatherStateName = styled.h3`
+  margin-top: 80px;
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;
@@ -109,7 +106,7 @@ export const WeatherStateName: any = styled.h3`
   color: #a09fb1;
 `
 
-export const Footer: any = styled.div`
+export const Footer = styled.div`
   display: flex;
   flex-direction: column;
   font-family: Raleway;
@@ -118,17 +115,22 @@ export const Footer: any = styled.div`
   color: #88869d;
 `
 
-export const CurrentDate: any = styled.div`
+export const CurrentDate = styled.div`
   width: 100%;
   display: flex;
   font-size: 18px;
 `
+export const DotIcon = styled.img`
+  margin: 0 16px;  
+`
 
-export const Location: any = styled.div`
+export const Location = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 18px;
 `
 
-export const VectorIcon: any = styled.img``
-export const CurrentLocation: any = styled.p``
+export const LocationTitle = styled.p`
+  margin-left: 9px;
+`
