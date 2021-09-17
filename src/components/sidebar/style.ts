@@ -21,7 +21,7 @@ export const Header = styled.div`
   align-items: center;
 `
 
-export const SearchButton = styled(Button)`
+export const SearchButton: any = styled(Button)`
   width: 161px;
   height: 40px;
   background: #6e707a;
@@ -35,7 +35,7 @@ export const SearchButton = styled(Button)`
   font-size: 16px;
 `
 
-export const GeopositionBadge = styled(Badge)`
+export const GeopositionBadge: any = styled(Badge)`
   border-radius: 50px;
   width: 40px;
   height: 40px;
@@ -49,6 +49,7 @@ export const GeopositionBadge = styled(Badge)`
 `
 
 export const Body = styled.div`
+  height:641px;
   margin-top: 95px;
   display: flex;
   flex-direction: column;
@@ -119,6 +120,8 @@ export const CurrentDate = styled.div`
   width: 100%;
   display: flex;
   font-size: 18px;
+  height: 57;
+  margin-bottom:10px;
 `
 export const DotIcon = styled.img`
   margin: 0 16px;  
@@ -128,9 +131,11 @@ export const Location = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 35px;
   font-size: 18px;
 `
 
 export const LocationTitle = styled.p`
   margin-left: 9px;
+  width: 47px;
 `

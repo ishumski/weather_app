@@ -1,4 +1,10 @@
-const Badge = ({ icon, className }: any): JSX.Element => (
+const Badge = ({
+  icon,
+  className
+}: {
+  icon: string
+  className: string
+}): JSX.Element => (
   <div className={className}>
     <img src={icon} alt="" />
   </div>
