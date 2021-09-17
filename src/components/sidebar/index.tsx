@@ -1,52 +1,87 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getCurrentLocationForecast } from '../../store/action'
 import { RootState } from '../../store/root-reducer'
+import { getCurrentLocationForecast } from '../../api'
+import {
+  ConsolidatedWeather,
+  ForecastData,
+  ForecastInitialState
+} from '../../types/interfaces'
+import ShowCurrentDate from '../show-current-date'
 
-import s from './index.module.css'
+import ShowerIcon from '../../assets/images/shower.png'
+import CloudIcon from '../../assets/images/cloudy.png'
+import GeopositionIcon from '../../assets/images/geoposition.svg'
+import CelsiusIcon from '../../assets/images/celsius.svg'
+import LocationIcon from '../../assets/images/location.svg'
+import Dot from '../../assets/images/dot.svg'
 
-const Sidebar = () => {
+import {
+  SidebarContaner,
+  Header,
+  SearchButton,
+  GeopositionBadge,
+  Body,
+  SmallCloud,
+  MediumCloudRight,
+  MediumCloudLeft,
+  LargeCloud,
+  Temperature,
+  WeatherStateName,
+  Footer,
+  CurrentDate,
+  DotIcon,
+  Location,
+  LocationTitle
+} from './style'
+
+const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
-  const { forecastData } = useSelector((state: RootState) => state.forecastData)
 
-  const { title, consolidated_weather } = forecastData
-  const { weather_state_name, applicable_date, the_temp } =
-    consolidated_weather[0]
-
-  useEffect(() => {
-    console.log('testFirstRender')
-    currentLocationForecast()
+  useEffect((): void => {
+    dispatch(getCurrentLocationForecast())
   }, [])
 
-  const currentLocationForecast = () => dispatch(getCurrentLocationForecast())
+  const { forecastData }: ForecastInitialState = useSelector(
+    (state: RootState) => state.forecastData
+  )
+  const { title, consolidated_weather }: ForecastData = forecastData
+  const { weather_state_name, the_temp }: ConsolidatedWeather =
+    consolidated_weather[0]
+
+  const fixedTemp: number = parseFloat(the_temp.toFixed(1))
+
   return (
-    <div className={s.sidebar}>
-      <div className={s.header}>
-        <button className={s.searchButton}>Search for place</button>
-        <button className={s.geolocationButton}>O</button>
-      </div>
-      <div className={s.body}>
-        <img
-          className={s.weatherIcon}
-          src="https://s3-alpha-sig.figma.com/img/f823/173c/6d67db3d534c1d812e09aed0501cdb6e?Expires=1632700800&Signature=N-5-EDzGVNnweLD9F1swh0n2ZBNLF7ZvDMCyX3BTCNp~uZ4MD4l7v8RallOA0tiWjoPdAmBvJRdMBcnylybAFCEkDnp9IlHPX38DHYD0VuoHmjwh98q4~FMPhfxHw1Z5GNUZXtMIq6fg3NalgOWNVSL8wKcLlGxtjJS637rWiKIvXbYgP-FotVg4aT~3JW0Z5WvouPwDV4WBX2vG1Jw1hLyRkNMrokcNGiVxVg6kM12dTaG8YwEvvKDd0xs5Vofpdp2fSNR~KoZ8-brdDEv26fKCrc~Ro8UEFhRLPLSAfpYEbjgXTVqtfyTMV7b7oPEOaKeWR93q40Ye64n7PNJOHQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          alt="weather-icon"
-        />
-        <h2 className={s.temperature}>{the_temp}С</h2>
-        <h3 className={s.weather}>{weather_state_name}</h3>
-      </div>
-      <div className={s.footer}>
-        <div className={s.currentDate}>
+    <SidebarContaner>
+      <Header>
+        <SearchButton buttonLabel="Search for places"></SearchButton>
+        <GeopositionBadge icon={GeopositionIcon}></GeopositionBadge>
+      </Header>
+      <Body>
+        <SmallCloud src={CloudIcon} alt="small-cloud-icon" />
+        <MediumCloudRight src={CloudIcon} alt="medium-cloud-icon" />
+        <MediumCloudLeft src={CloudIcon} alt="medium-cloud-icon" />
+        <LargeCloud src={CloudIcon} alt="large-cloud-icon" />
+        <img src={ShowerIcon} alt="weather-icon" />
+        <Temperature>
+          {fixedTemp}
+          <img src={CelsiusIcon} alt="celsius-icon" />
+        </Temperature>
+        <WeatherStateName>{weather_state_name}</WeatherStateName>
+      </Body>
+      <Footer>
+        <CurrentDate>
           <p>Today</p>
-          <span>.</span>
-          <p>{applicable_date}</p>
-        </div>
-        <div className={s.location}>
-          <img className={s.vectorIcon} src="" alt="" />
-          <p className={s.currentLocation}>{title}</p>
-        </div>
-      </div>
-    </div>
+          <DotIcon src={Dot} alt="dot-icon" />
+          <ShowCurrentDate />
+        </CurrentDate>
+        <Location>
+          <img src={LocationIcon} alt="location-icon" />
+          <LocationTitle>{title}</LocationTitle>
+        </Location>
+      </Footer>
+    </SidebarContaner>
   )
 }
 

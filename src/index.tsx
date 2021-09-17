@@ -2,13 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import App from './components/app'
+import App from './views/app'
 import store from './store/store'
 
-import './index.module.css'
+import GlobalStyle from './assets/styles/global-styles'
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <Provider store={store}>
       <App />
     </Provider>

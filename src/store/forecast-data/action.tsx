@@ -1,14 +1,7 @@
+import { ForecastData, SetForecastAction } from '../../types/interfaces'
 import { forecastDataConstance } from './types'
 
-export const getCurrentLocationForecast = () => (dispatch: any) => {
-  const currentLocationForecastUrl = '/api/location/44418/'
-  fetch(currentLocationForecastUrl)
-    .then(res => res.json())
-    .then(data => {
-      dispatch({
-        type: forecastDataConstance.GET_CURRENT_LOCATION_FORECAST,
-        payload: data
-      })
-    })
-    .catch(error => console.log(error))
-}
+export const setForecast = (data: ForecastData): SetForecastAction => ({
+  type: forecastDataConstance.SET_CURRENT_LOCATION_FORECAST,
+  payload: data
+})

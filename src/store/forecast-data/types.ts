@@ -1,3 +1,3 @@
-export const forecastDataConstance = {
-    GET_CURRENT_LOCATION_FORECAST: "GET_CURRENT_LOCATION_FORECAST"
+export enum forecastDataConstance {
+    SET_CURRENT_LOCATION_FORECAST = "SET_CURRENT_LOCATION_FORECAST"
 }
