@@ -46,6 +46,7 @@ const Sidebar: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
     (state: RootState) => state.forecastData
   )
+
   const { title, consolidated_weather }: ForecastData = forecastData
   const { weather_state_name, the_temp }: ConsolidatedWeather =
     consolidated_weather[0]
