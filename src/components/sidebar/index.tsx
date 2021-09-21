@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store/root-reducer'
-import { getForecast } from '../../api'
-import { getParameterByCoords } from '../../utils'
+import { getForecastByCoords, getForecastByGeolocationUrl } from '../../api'
 import {
   ConsolidatedWeather,
   ForecastData,
@@ -49,7 +48,9 @@ const Sidebar: React.FC = (): JSX.Element => {
         const fixedLongitude: number = parseFloat(longitude.toFixed(2))
 
         dispatch(
-          getForecast(getParameterByCoords(fixedLatitude, fixedLongitude))
+          getForecastByGeolocationUrl(
+            getForecastByCoords(fixedLatitude, fixedLongitude)
+          )
         )
       }
     )
