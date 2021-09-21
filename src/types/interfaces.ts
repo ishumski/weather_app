@@ -12,26 +12,12 @@ export interface ForecastData {
 
 export interface ConsolidatedWeather {
     weather_state_name: string,
+    weather_state_abbr: string,
     applicable_date: string,
     the_temp: number
 }
 
 export interface SetForecastAction extends ReduxAction { type: typeof forecastDataConstance.SET_CURRENT_LOCATION_FORECAST, payload: ForecastData; }
-
-export interface GeopositionData {
-    coords: Coords,
-    timestamp: number
-}
-
-export interface Coords {
-    accuracy: number,
-    altitude: number | null,
-    altitudeAccuracy: number | null,
-    heading: number | null,
-    latitude: number,
-    longitude: number,
-    speed: number | null
-}
 
 export interface CurrentLocationData {
     distance: number,

@@ -86,7 +86,11 @@ export const LargeCloud = styled.img`
   left: -111px;
   width: 248px;
   height: 183px;
- 
+`
+export const WeatherIcon = styled.img`
+  width: 202px;
+  height:234px;
+  opacity: none;
 `
 
 export const Temperature = styled.div`
