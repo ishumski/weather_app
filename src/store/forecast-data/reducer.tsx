@@ -7,6 +7,7 @@ const initialState: ForecastInitialState = {
     consolidated_weather: [
       {
         weather_state_name: '',
+        weather_state_abbr: '',
         applicable_date: '',
         the_temp: 0
       }
