@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store/root-reducer'
-import { getCurrentLocationForecast } from '../../api'
+import { getForecast } from '../../api'
 import {
   ConsolidatedWeather,
   ForecastData,
@@ -35,12 +35,24 @@ import {
   Location,
   LocationTitle
 } from './style'
+import { getParameterByCoords } from '../../utils'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
 
   useEffect((): void => {
-    dispatch(getCurrentLocationForecast())
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const { latitude, longitude }: GeolocationCoordinates = position.coords
+
+        const fixedLatitude: number = parseFloat(latitude.toFixed(2))
+        const fixedLongitude: number = parseFloat(longitude.toFixed(2))
+
+        dispatch(
+          getForecast(getParameterByCoords(fixedLatitude, fixedLongitude))
+        )
+      }
+    )
   }, [])
 
   const { forecastData }: ForecastInitialState = useSelector(

@@ -1,32 +1,23 @@
 import { setForecast } from "../store/action"
-import { CurrentLocationData, ForecastData, GeopositionData } from "../types/interfaces"
 
-export const getCurrentLocationForecast = (): any => (dispatch: any) => {
+import { CurrentLocationData, ForecastData, } from "../types/interfaces"
 
-    navigator.geolocation.getCurrentPosition((position: GeopositionData) => {
+export const getForecast = (param: string) => (dispatch: any) => {
+    const apiUrl: string = `api/location/search/?${param}`
 
-        const { latitude, longitude }: { latitude: number, longitude: number } = position.coords
+    return fetch(apiUrl)
+        .then((res: Response) => res.json())
+        .then((data: Array<CurrentLocationData>) => {
 
-        const fixedLatitude: number = parseFloat(latitude.toFixed(2))
-        const fixedLongitude: number = parseFloat(longitude.toFixed(2))
+            const currentWoeid: number = data[0].woeid
+            const currentLocationForecast: string = `/api/location/${currentWoeid}/`
 
-        const currentGeolocationUrl: string = `api/location/search/?lattlong=${fixedLatitude},${fixedLongitude}`
-
-        return fetch(currentGeolocationUrl)
-            .then((res: any) => res.json())
-            .then((data: Array<CurrentLocationData>) => {
-
-                const currentWoeid: number = data[0].woeid
-                const currentLocationForecast: string = `api/location/${currentWoeid}/`
-
-                fetch(currentLocationForecast)
-                    .then((response: any) => response.json())
-                    .then((data: ForecastData) => {
-                        dispatch(setForecast(data))
-                    })
-            })
-            .catch((error: string) => console.log(error))
-    })
+            fetch(currentLocationForecast)
+                .then((response: Response) => response.json())
+                .then((data: ForecastData) => {
+                    dispatch(setForecast(data))
+                })
+        })
+        .catch((error: string) => console.log(error))
 }
-
 
