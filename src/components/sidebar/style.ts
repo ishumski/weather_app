@@ -34,8 +34,6 @@ export const SearchButton: any = styled(Button)`
   font-weight: 500;
   font-size: 16px;
 `
-export const WeatherIcon = styled.img`
-`
 
 export const GeopositionBadge: any = styled(Badge)`
   border-radius: 50px;
@@ -88,7 +86,11 @@ export const LargeCloud = styled.img`
   left: -111px;
   width: 248px;
   height: 183px;
- 
+`
+export const WeatherIcon = styled.img`
+  width: 202px;
+  height:234px;
+  opacity: none;
 `
 
 export const Temperature = styled.div`
