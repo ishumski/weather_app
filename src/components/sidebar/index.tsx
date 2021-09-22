@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store/root-reducer'
 import { getForecast } from '../../api'
+import { getParameterByCoords } from '../../utils'
 import {
   ConsolidatedWeather,
   ForecastData,
@@ -35,7 +36,6 @@ import {
   LocationTitle,
   WeatherIcon
 } from './style'
-import { getParameterByCoords } from '../../utils'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()

@@ -6,4 +6,4 @@ export const getParameterByCoords = (latitude: number, longitude: number) => {
 export const getParameterByCityName  = (city: string) => {
     const currentGeolocationByCity: string = `query=${city}`
     return currentGeolocationByCity
-
+}
