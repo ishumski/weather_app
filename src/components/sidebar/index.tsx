@@ -43,7 +43,8 @@ const Sidebar: React.FC = (): JSX.Element => {
   useEffect((): void => {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
-        const { latitude, longitude }: GeolocationCoordinates = position.coords
+        const { latitude, longitude } = position.coords
+        // : GeolocationCoordinates
 
         const fixedLatitude: number = parseFloat(latitude.toFixed(2))
         const fixedLongitude: number = parseFloat(longitude.toFixed(2))
