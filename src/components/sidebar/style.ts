@@ -34,6 +34,8 @@ export const SearchButton: any = styled(Button)`
   font-weight: 500;
   font-size: 16px;
 `
+export const WeatherIcon = styled.img`
+`
 
 export const GeopositionBadge: any = styled(Badge)`
   border-radius: 50px;

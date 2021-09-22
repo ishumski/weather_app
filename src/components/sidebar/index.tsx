@@ -10,7 +10,6 @@ import {
 } from '../../types/interfaces'
 import ShowCurrentDate from '../show-current-date'
 
-import ShowerIcon from '../../assets/images/shower.png'
 import CloudIcon from '../../assets/images/cloudy.png'
 import GeopositionIcon from '../../assets/images/geoposition.svg'
 import CelsiusIcon from '../../assets/images/celsius.svg'
@@ -33,7 +32,8 @@ import {
   CurrentDate,
   DotIcon,
   Location,
-  LocationTitle
+  LocationTitle,
+  WeatherIcon
 } from './style'
 import { getParameterByCoords } from '../../utils'
 
@@ -60,8 +60,11 @@ const Sidebar: React.FC = (): JSX.Element => {
   )
 
   const { title, consolidated_weather }: ForecastData = forecastData
-  const { weather_state_name, the_temp }: ConsolidatedWeather =
-    consolidated_weather[0]
+  const {
+    weather_state_name,
+    weather_state_abbr,
+    the_temp
+  }: ConsolidatedWeather = consolidated_weather[0]
 
   const fixedTemp: number = parseFloat(the_temp.toFixed(1))
 
@@ -76,7 +79,10 @@ const Sidebar: React.FC = (): JSX.Element => {
         <MediumCloudRight src={CloudIcon} alt="medium-cloud-icon" />
         <MediumCloudLeft src={CloudIcon} alt="medium-cloud-icon" />
         <LargeCloud src={CloudIcon} alt="large-cloud-icon" />
-        <img src={ShowerIcon} alt="weather-icon" />
+        <WeatherIcon
+          src={`https://www.metaweather.com/static/img/weather/${weather_state_abbr}.svg`}
+          alt="weather-icon"
+        />
         <Temperature>
           {fixedTemp}
           <img src={CelsiusIcon} alt="celsius-icon" />
