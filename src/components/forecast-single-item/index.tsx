@@ -37,8 +37,8 @@ const ForecastSingleItem = ({
   weather_state_abbr,
   applicable_date
 }: {
-  max_temp: number
-  min_temp: number
+  max_temp: any
+  min_temp: any
   id: number
   weather_state_abbr: string
   applicable_date: string

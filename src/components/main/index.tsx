@@ -1,134 +1,122 @@
 import { useSelector } from 'react-redux'
-import styled from 'styled-components'
 
 import { RootState } from '../../store/root-reducer'
 import ForecastSingleItem from '../forecast-single-item'
 import DetailedForecastInfo from '../../common/detailed-forecast-info'
 
-import CelsiusIcon from '../../assets/images/celsius.svg'
+import CelsiusIcon from '../../assets/images/celsiusIcon.svg'
 import FahrenheitIcon from '../../assets/images/Fahrenheit.svg'
 import ForecastInfo from '../../common/forecast-info'
-
-const MainContainer = styled.div`
-  flex: 0.7;
-  display: flex;
-  justify-content: center;
-  background: #100e1d;
-  z-index: 1;
-`
-
-const Forecast = styled.div`
-  max-width: 704px;
-  width: 100%;
-  padding: 42px 123px 25px 154px;
-`
-
-const TemperatureBadgets = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 66px;
-`
-const CelsiusBadget: any = styled.img`
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  color: #e7e7eb;
-  background: #6e707a;
-`
-
-const FahrenheitBadget: any = styled.img`
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  color: #e7e7eb;
-  background: #6e707a;
-`
-
-const ConsolidatedWeather = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const Header = styled.div`
-  dispalay: flex;
-  flex-direction: column;
-  height: 283px;
-  margin-bottom: 72px;
-`
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const DetailedForecast = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`
-
-const WeatherNameTitle = styled.h1`
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  color: #e7e7eb;
-`
+import {
+  Body,
+  CelsiusBadget,
+  ConsolidatedWeatherInfo,
+  DetailedForecast,
+  FahrenheitBadget,
+  Forecast,
+  Header,
+  MainContainer,
+  TemperatureBadgets,
+  WeatherNameTitle
+} from './style'
+import { ConsolidatedWeather, TempValue } from '../../types/interfaces'
+import { useState } from 'react'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData } = useSelector((state: RootState) => state.forecastData)
-  console.log('forecastData', forecastData)
   const { consolidated_weather } = forecastData
-  const {
+
+  let {
     wind_speed,
     wind_direction_compass,
     weather_state_name,
     humidity,
     visibility,
     air_pressure,
-    applicable_date
+    max_temp,
+    min_temp
   } = forecastData.consolidated_weather[0]
-  console.log('LLLL', forecastData.consolidated_weather[0])
+
+  let [temp, setTemp] = useState<TempValue>({
+    maxTemp: 0,
+    minTemp: 0
+  })
+
+  const changeCelsiusToFahrenheit = (t: number) => {
+    const changedToFahrenheit = parseFloat(((t * 9) / 5 + 32).toFixed(2))
+    return changedToFahrenheit
+  }
+
+  const handleClickToF = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setTemp({
+      maxTemp: changeCelsiusToFahrenheit(max_temp),
+      minTemp: changeCelsiusToFahrenheit(min_temp)
+    })
+  }
+
+  const handleClickToC = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setTemp({
+      maxTemp: max_temp,
+      minTemp: min_temp
+    })
+  }
+
   return (
     <MainContainer>
       <Forecast>
         <Header>
           <TemperatureBadgets>
-            <CelsiusBadget src={CelsiusIcon} alt={'celsius-icon'} />
-            <FahrenheitBadget src={FahrenheitIcon} alt={'fahrenheit-icon'} />
+            <CelsiusBadget
+              src={CelsiusIcon}
+              alt={'celsius-icon'}
+              onClick={handleClickToC}
+            >
+              C
+            </CelsiusBadget>
+            <FahrenheitBadget
+              src={FahrenheitIcon}
+              alt={'fahrenheit-icon'}
+              onClick={handleClickToF}
+            >
+              F
+            </FahrenheitBadget>
           </TemperatureBadgets>
-          <ConsolidatedWeather>
-            {consolidated_weather.slice(1).map((elem: any) => {
-              const {
-                max_temp,
-                min_temp,
-                weather_state_abbr,
-                applicable_date
-              } = elem
-              const fixedMaxTemp: number = parseFloat(max_temp.toFixed(1))
-              const fixedMinTemp: number = parseFloat(min_temp.toFixed(1))
-              return (
-                <ForecastSingleItem
-                  key={elem.id}
-                  applicable_date={applicable_date}
-                  max_temp={fixedMaxTemp}
-                  min_temp={fixedMinTemp}
-                  id={elem.id}
-                  weather_state_abbr={`https://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`}
-                />
-              )
-            })}
-          </ConsolidatedWeather>
+          <ConsolidatedWeatherInfo>
+            {consolidated_weather
+              .slice(1)
+              .map(
+                ({
+                  weather_state_abbr,
+                  applicable_date,
+                  id,
+                  max_temp,
+                  min_temp
+                }: ConsolidatedWeather) => {
+                  // const fixedMaxTemp: number = parseFloat(
+                  //   temp.maxTemp.toFixed(2)
+                  // )
+                  // const fixedMinTemp: number = parseFloat(
+                  //   temp.minTemp.toFixed(2)
+                  // )
+
+                  const fixedMaxTemp: number = parseFloat(max_temp.toFixed(2))
+                  const fixedMinTemp: number = parseFloat(min_temp.toFixed(2))
+
+                  return (
+                    <ForecastSingleItem
+                      key={id}
+                      applicable_date={applicable_date}
+                      id={id}
+                      weather_state_abbr={`https://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`}
+                      max_temp={fixedMaxTemp}
+                      min_temp={fixedMinTemp}
+                    />
+                  )
+                }
+              )}
+          </ConsolidatedWeatherInfo>
         </Header>
         <Body>
           <WeatherNameTitle>{`Today's ${weather_state_name}`}</WeatherNameTitle>

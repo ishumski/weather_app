@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Main from '../../components/main'
 
 import Sidebar from '../../components/sidebar'
 
@@ -10,6 +11,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <AppContainer>
       <Sidebar />
+      <Main />
     </AppContainer>
   )
 }
