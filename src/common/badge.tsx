@@ -1,13 +1,9 @@
-const Badge = ({
-  icon,
-  className
-}: {
-  icon: string
-  className: string
-}): JSX.Element => (
-  <div className={className}>
-    <img src={icon} alt="" />
-  </div>
+import { BadgeProps } from '../types/interfaces'
+
+const Badge = ({ icon, alt, className, onClick }: BadgeProps): JSX.Element => (
+  <button className={className} onClick={onClick}>
+    <img src={icon} alt={alt} />
+  </button>
 )
 
 export default Badge

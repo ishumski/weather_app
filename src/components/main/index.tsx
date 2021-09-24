@@ -1,12 +1,21 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootState } from '../../store/root-reducer'
+import { temperatureUnit } from '../../types/enum'
+import {
+  ConsolidatedWeather,
+  ForecastData,
+  ForecastInitialState
+} from '../../types/interfaces'
 import ForecastSingleItem from '../forecast-single-item'
+import ForecastInfo from '../../common/forecast-info'
 import DetailedForecastInfo from '../../common/detailed-forecast-info'
 
 import CelsiusIcon from '../../assets/images/celsiusIcon.svg'
 import FahrenheitIcon from '../../assets/images/Fahrenheit.svg'
-import ForecastInfo from '../../common/forecast-info'
+import WindStatusIcon from '../../assets/images/navigation.svg'
+
 import {
   Body,
   CelsiusBadget,
@@ -17,50 +26,36 @@ import {
   Header,
   MainContainer,
   TemperatureBadgets,
-  WeatherNameTitle
+  WeatherNameTitle,
+  WindStatusBadge,
+  BarValue,
+  HumidityBar
 } from './style'
-import { ConsolidatedWeather, TempValue } from '../../types/interfaces'
-import { useState } from 'react'
+import { changeCelsiusToFahrenheit } from '../../utils'
 
 const Main: React.FC = (): JSX.Element => {
-  const { forecastData } = useSelector((state: RootState) => state.forecastData)
-  const { consolidated_weather } = forecastData
+  const { forecastData }: ForecastInitialState = useSelector(
+    (state: RootState) => state.forecastData
+  )
+  const { consolidated_weather }: ForecastData = forecastData
 
-  let {
+  const {
     wind_speed,
     wind_direction_compass,
     weather_state_name,
     humidity,
     visibility,
-    air_pressure,
-    max_temp,
-    min_temp
-  } = forecastData.consolidated_weather[0]
+    air_pressure
+  }: ConsolidatedWeather = forecastData.consolidated_weather[0]
 
-  let [temp, setTemp] = useState<TempValue>({
-    maxTemp: 0,
-    minTemp: 0
-  })
+  const [isCelsius, setIsCelsius] = useState<string>(temperatureUnit.CELSIUS)
 
-  const changeCelsiusToFahrenheit = (t: number) => {
-    const changedToFahrenheit = parseFloat(((t * 9) / 5 + 32).toFixed(2))
-    return changedToFahrenheit
+  const handleClickToF = (): void => {
+    setIsCelsius(temperatureUnit.FAHRENHEIT)
   }
 
-  const handleClickToF = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    setTemp({
-      maxTemp: changeCelsiusToFahrenheit(max_temp),
-      minTemp: changeCelsiusToFahrenheit(min_temp)
-    })
-  }
-
-  const handleClickToC = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    setTemp({
-      maxTemp: max_temp,
-      minTemp: min_temp
-    })
+  const handleClickToC = (): void => {
+    setIsCelsius(temperatureUnit.CELSIUS)
   }
 
   return (
@@ -69,19 +64,15 @@ const Main: React.FC = (): JSX.Element => {
         <Header>
           <TemperatureBadgets>
             <CelsiusBadget
-              src={CelsiusIcon}
+              icon={CelsiusIcon}
               alt={'celsius-icon'}
               onClick={handleClickToC}
-            >
-              C
-            </CelsiusBadget>
+            />
             <FahrenheitBadget
-              src={FahrenheitIcon}
+              icon={FahrenheitIcon}
               alt={'fahrenheit-icon'}
               onClick={handleClickToF}
-            >
-              F
-            </FahrenheitBadget>
+            />
           </TemperatureBadgets>
           <ConsolidatedWeatherInfo>
             {consolidated_weather
@@ -94,15 +85,8 @@ const Main: React.FC = (): JSX.Element => {
                   max_temp,
                   min_temp
                 }: ConsolidatedWeather) => {
-                  // const fixedMaxTemp: number = parseFloat(
-                  //   temp.maxTemp.toFixed(2)
-                  // )
-                  // const fixedMinTemp: number = parseFloat(
-                  //   temp.minTemp.toFixed(2)
-                  // )
-
-                  const fixedMaxTemp: number = parseFloat(max_temp.toFixed(2))
-                  const fixedMinTemp: number = parseFloat(min_temp.toFixed(2))
+                  const fixedMaxTemp: number = parseFloat(max_temp.toFixed(1))
+                  const fixedMinTemp: number = parseFloat(min_temp.toFixed(1))
 
                   return (
                     <ForecastSingleItem
@@ -110,8 +94,16 @@ const Main: React.FC = (): JSX.Element => {
                       applicable_date={applicable_date}
                       id={id}
                       weather_state_abbr={`https://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`}
-                      max_temp={fixedMaxTemp}
-                      min_temp={fixedMinTemp}
+                      max_temp={
+                        isCelsius === temperatureUnit.CELSIUS
+                          ? `${fixedMaxTemp} C`
+                          : `${changeCelsiusToFahrenheit(fixedMaxTemp)} F`
+                      }
+                      min_temp={
+                        isCelsius === temperatureUnit.CELSIUS
+                          ? `${fixedMinTemp} C`
+                          : `${changeCelsiusToFahrenheit(fixedMinTemp)} F`
+                      }
                     />
                   )
                 }
@@ -123,19 +115,37 @@ const Main: React.FC = (): JSX.Element => {
           <DetailedForecast>
             <DetailedForecastInfo
               title="Wind Status"
-              value={wind_speed.toFixed(1)}
+              value={parseFloat(wind_speed.toFixed(1))}
               text="mph"
-              additionalInfo={wind_direction_compass}
+              additionalInfo={
+                <>
+                  <WindStatusBadge src={WindStatusIcon} alt="" />
+                  {wind_direction_compass}
+                </>
+              }
             />
             <DetailedForecastInfo
               title="Humidity"
               value={humidity}
               text=" %"
-              additionalInfo={'percentage scale'}
+              additionalInfo={
+                <>
+                  <BarValue>
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100%</span>
+                  </BarValue>
+                  <HumidityBar
+                    type="range"
+                    value={humidity}
+                    onChange={e => e.target.value}
+                  />
+                </>
+              }
             />
             <ForecastInfo
               title="Visibility"
-              value={visibility.toFixed(1)}
+              value={parseFloat(visibility.toFixed(1))}
               text="miles"
             />
             <ForecastInfo

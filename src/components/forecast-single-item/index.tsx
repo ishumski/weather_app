@@ -26,10 +26,6 @@ const TemperatureValue = styled.div`
   justify-content: space-evenly;
 `
 
-const MaxTemp = styled.p``
-
-const MinTemp = styled.p``
-
 const ForecastSingleItem = ({
   max_temp,
   min_temp,
@@ -37,8 +33,8 @@ const ForecastSingleItem = ({
   weather_state_abbr,
   applicable_date
 }: {
-  max_temp: any
-  min_temp: any
+  max_temp: number | string
+  min_temp: number | string
   id: number
   weather_state_abbr: string
   applicable_date: string
@@ -48,8 +44,8 @@ const ForecastSingleItem = ({
       <Title> {applicable_date.toLocaleString()}</Title>
       <ItemIcon src={weather_state_abbr} alt="forecast-icon" />
       <TemperatureValue>
-        <MaxTemp>{max_temp}</MaxTemp>
-        <MinTemp>{min_temp}</MinTemp>
+        <p>{max_temp}</p>
+        <p>{min_temp}</p>
       </TemperatureValue>
     </ItemContainer>
   )

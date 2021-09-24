@@ -1,5 +1,6 @@
 import { forecastDataConstance } from "../store/forecast-data/types";
 import { Action as ReduxAction } from "redux";
+import { MouseEventHandler } from "react";
 
 export interface ForecastInitialState {
     forecastData: ForecastData
@@ -21,10 +22,10 @@ export interface ConsolidatedWeather {
     predictability: number,
     the_temp: number,
     visibility: number,
-    weather_state_abbr: "hr",
-    weather_state_name: "",
+    weather_state_abbr: string,
+    weather_state_name: string,
     wind_direction: number,
-    wind_direction_compass: "",
+    wind_direction_compass: string,
     wind_speed: number
 }
 
@@ -38,7 +39,27 @@ export interface CurrentLocationData {
     woeid: number,
 }
 
-export interface TempValue {
-    maxTemp: number,
-    minTemp: number
+export interface BadgeProps {
+    icon: string,
+    alt: string,
+    className: string,
+    onClick: MouseEventHandler
+}
+
+export interface ButtonProps {
+    buttonLabel: string,
+    className: string
+}
+
+export interface DetailedForecastInfoProps {
+    title: string,
+    value: number,
+    text: string,
+    additionalInfo: any
+}
+
+export interface ForecastInfoProps {
+    title: string
+    value: number
+    text: string
 }

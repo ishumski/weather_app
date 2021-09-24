@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DetailedForecastInfoProps } from '../types/interfaces'
 
 const ForecastInfoContainer = styled.div`
   width: 328px;
@@ -18,10 +19,11 @@ const Title = styled.h1`
   font-weight: 500;
   font-size: 16px;
 `
+
 const ForecastValue = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 31px;
+  margin-bottom: 25px;
 `
 
 const Value = styled.div`
@@ -30,6 +32,7 @@ const Value = styled.div`
   font-weight: bold;
   font-size: 64px;
   margin-right: 5px;
+
 `
 const Text = styled.span`
   font-family: Raleway;
@@ -46,12 +49,7 @@ const DetailedForecastInfo = ({
   value,
   text,
   additionalInfo
-}: {
-  title: string
-  value: any
-  text: string
-  additionalInfo: any
-}): JSX.Element => {
+}: DetailedForecastInfoProps): JSX.Element => {
   return (
     <ForecastInfoContainer>
       <Title>{title}</Title>
