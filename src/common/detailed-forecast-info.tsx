@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import { DetailedForecastInfoProps } from '../types/interfaces'
+import {
+  background,
+  fontSize,
+  fontWeight,
+  primary
+} from '../assets/styles/styles'
 
 const ForecastInfoContainer = styled.div`
   width: 328px;
@@ -9,15 +14,13 @@ const ForecastInfoContainer = styled.div`
   align-items: center;
   padding-top: 22px;
   margin-bottom: 48px;
-  color: #e7e7eb;
-  background-color: #1e213a;
+  color: ${primary.color_1};
+  background: ${background.color_2};
 `
 
 const Title = styled.h1`
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: ${fontWeight.normal};
+  font-size: ${fontSize.size_2};
 `
 
 const ForecastValue = styled.div`
@@ -27,22 +30,27 @@ const ForecastValue = styled.div`
 `
 
 const Value = styled.div`
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 64px;
   margin-right: 5px;
-
+  font-weight: ${fontWeight.bold};
+  font-size: ${fontSize.size_7};
 `
+
 const Text = styled.span`
-  font-family: Raleway;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: ${fontSize.size_6};
+  font-weight: ${fontWeight.bold};
 `
 
 const AdditionalInfo = styled.div`
-  font-family: Raleway;
+  max-width: 229px;
+  width: 100%;
 `
+
+interface DetailedForecastInfoProps {
+  title: string
+  value: number
+  text: string
+  additionalInfo: any
+}
 
 const DetailedForecastInfo = ({
   title,

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-
 import { RootState } from '../../store/root-reducer'
 import { temperatureUnit } from '../../types/enum'
 import {
@@ -11,27 +10,27 @@ import {
 import ForecastSingleItem from '../forecast-single-item'
 import ForecastInfo from '../../common/forecast-info'
 import DetailedForecastInfo from '../../common/detailed-forecast-info'
-
-import CelsiusIcon from '../../assets/images/celsiusIcon.svg'
-import FahrenheitIcon from '../../assets/images/Fahrenheit.svg'
+import { changeCelsiusToFahrenheit } from '../../utils'
+import HumidityBar from '../../common/humidity-bar'
 import WindStatusIcon from '../../assets/images/navigation.svg'
-
 import {
   Body,
-  CelsiusBadget,
   ConsolidatedWeatherInfo,
   DetailedForecast,
-  FahrenheitBadget,
   Forecast,
   Header,
   MainContainer,
-  TemperatureBadgets,
+  TempContainer,
+  TempBadgets,
   WeatherNameTitle,
   WindStatusBadge,
-  BarValue,
-  HumidityBar
+  AditionalInfo,
+  WindDirection
 } from './style'
-import { changeCelsiusToFahrenheit } from '../../utils'
+import CelsiusIcon from '../../assets/images/celsius'
+import FahrenheitIcon from '../../assets/images/fahrenheit'
+import Badge from '../../common/badge'
+import { background, primary } from '../../assets/styles/styles'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
@@ -42,38 +41,69 @@ const Main: React.FC = (): JSX.Element => {
   const {
     wind_speed,
     wind_direction_compass,
-    weather_state_name,
     humidity,
     visibility,
     air_pressure
   }: ConsolidatedWeather = forecastData.consolidated_weather[0]
 
-  const [isCelsius, setIsCelsius] = useState<string>(temperatureUnit.CELSIUS)
+  const [selectedTemperatureUnit, setSelectedTemperatureUnit] =
+    useState<string>(temperatureUnit.CELSIUS)
 
   const handleClickToF = (): void => {
-    setIsCelsius(temperatureUnit.FAHRENHEIT)
+    setSelectedTemperatureUnit(temperatureUnit.FAHRENHEIT)
   }
 
   const handleClickToC = (): void => {
-    setIsCelsius(temperatureUnit.CELSIUS)
+    setSelectedTemperatureUnit(temperatureUnit.CELSIUS)
   }
 
   return (
     <MainContainer>
       <Forecast>
         <Header>
-          <TemperatureBadgets>
-            <CelsiusBadget
-              icon={CelsiusIcon}
-              alt={'celsius-icon'}
-              onClick={handleClickToC}
-            />
-            <FahrenheitBadget
-              icon={FahrenheitIcon}
-              alt={'fahrenheit-icon'}
-              onClick={handleClickToF}
-            />
-          </TemperatureBadgets>
+          <TempContainer>
+            <TempBadgets>
+              <Badge
+                background={
+                  selectedTemperatureUnit === temperatureUnit.CELSIUS
+                    ? `${background.color_5}`
+                    : `${background.color_7}`
+                }
+                onClick={handleClickToC}
+              >
+                <CelsiusIcon
+                  width="40px"
+                  height="40px"
+                  viewBox="0 0 32 32"
+                  fill={
+                    selectedTemperatureUnit === temperatureUnit.CELSIUS
+                      ? `${primary.color_4}`
+                      : `${primary.color_1}`
+                  }
+                />
+              </Badge>
+
+              <Badge
+                onClick={handleClickToF}
+                background={
+                  selectedTemperatureUnit === temperatureUnit.CELSIUS
+                    ? `${background.color_7}`
+                    : `${background.color_5}`
+                }
+              >
+                <FahrenheitIcon
+                  width="40px"
+                  height="40px"
+                  viewBox="0 0 32 32"
+                  fill={
+                    selectedTemperatureUnit !== temperatureUnit.CELSIUS
+                      ? `${primary.color_4}`
+                      : `${primary.color_1}`
+                  }
+                />
+              </Badge>
+            </TempBadgets>
+          </TempContainer>
           <ConsolidatedWeatherInfo>
             {consolidated_weather
               .slice(1)
@@ -95,14 +125,14 @@ const Main: React.FC = (): JSX.Element => {
                       id={id}
                       weather_state_abbr={`https://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`}
                       max_temp={
-                        isCelsius === temperatureUnit.CELSIUS
-                          ? `${fixedMaxTemp} C`
-                          : `${changeCelsiusToFahrenheit(fixedMaxTemp)} F`
+                        selectedTemperatureUnit === temperatureUnit.CELSIUS
+                          ? `${fixedMaxTemp} °C`
+                          : `${changeCelsiusToFahrenheit(fixedMaxTemp)} °F`
                       }
                       min_temp={
-                        isCelsius === temperatureUnit.CELSIUS
-                          ? `${fixedMinTemp} C`
-                          : `${changeCelsiusToFahrenheit(fixedMinTemp)} F`
+                        selectedTemperatureUnit === temperatureUnit.CELSIUS
+                          ? `${fixedMinTemp} °C`
+                          : `${changeCelsiusToFahrenheit(fixedMinTemp)} °F`
                       }
                     />
                   )
@@ -111,36 +141,27 @@ const Main: React.FC = (): JSX.Element => {
           </ConsolidatedWeatherInfo>
         </Header>
         <Body>
-          <WeatherNameTitle>{`Today's ${weather_state_name}`}</WeatherNameTitle>
+          <WeatherNameTitle>{`Today's Hightlights`}</WeatherNameTitle>
           <DetailedForecast>
             <DetailedForecastInfo
               title="Wind Status"
               value={parseFloat(wind_speed.toFixed(1))}
               text="mph"
               additionalInfo={
-                <>
-                  <WindStatusBadge src={WindStatusIcon} alt="" />
+                <WindDirection>
+                  <WindStatusBadge src={WindStatusIcon} alt="wind-icon" />
                   {wind_direction_compass}
-                </>
+                </WindDirection>
               }
             />
             <DetailedForecastInfo
               title="Humidity"
               value={humidity}
-              text=" %"
+              text="%"
               additionalInfo={
-                <>
-                  <BarValue>
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100%</span>
-                  </BarValue>
-                  <HumidityBar
-                    type="range"
-                    value={humidity}
-                    onChange={e => e.target.value}
-                  />
-                </>
+                <AditionalInfo>
+                  <HumidityBar width={humidity} />
+                </AditionalInfo>
               }
             />
             <ForecastInfo

@@ -38,28 +38,3 @@ export interface CurrentLocationData {
     title: string,
     woeid: number,
 }
-
-export interface BadgeProps {
-    icon: string,
-    alt: string,
-    className: string,
-    onClick: MouseEventHandler
-}
-
-export interface ButtonProps {
-    buttonLabel: string,
-    className: string
-}
-
-export interface DetailedForecastInfoProps {
-    title: string,
-    value: number,
-    text: string,
-    additionalInfo: any
-}
-
-export interface ForecastInfoProps {
-    title: string
-    value: number
-    text: string
-}

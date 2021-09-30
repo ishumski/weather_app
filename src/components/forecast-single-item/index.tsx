@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import {
+  background,
+  fontSize,
+  fontWeight,
+  primary
+} from '../../assets/styles/styles'
 
 const ItemContainer = styled.div`
   width: 120px;
@@ -6,25 +12,33 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #e7e7eb;
-  background: #1e213a;
+  color: ${primary.color_1};
+  background: ${background.color_2};
 `
+
 const Title = styled.p`
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: ${fontWeight.normal};
+  font-size: ${fontSize.size_2};
 `
+
 const ItemIcon = styled.img`
   width: 55px;
   height: 60px;
 `
 
 const TemperatureValue = styled.div`
-  display: flex;
   width: 100%;
+  display: flex;
   justify-content: space-evenly;
 `
+
+interface ForecastSingleItemProps {
+  max_temp: number | string
+  min_temp: number | string
+  id: number
+  weather_state_abbr: string
+  applicable_date: string
+}
 
 const ForecastSingleItem = ({
   max_temp,
@@ -32,13 +46,7 @@ const ForecastSingleItem = ({
   id,
   weather_state_abbr,
   applicable_date
-}: {
-  max_temp: number | string
-  min_temp: number | string
-  id: number
-  weather_state_abbr: string
-  applicable_date: string
-}): JSX.Element => {
+}: ForecastSingleItemProps): JSX.Element => {
   return (
     <ItemContainer>
       <Title> {applicable_date.toLocaleString()}</Title>
