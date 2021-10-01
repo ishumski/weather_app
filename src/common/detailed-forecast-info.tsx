@@ -1,55 +1,45 @@
 import styled from 'styled-components'
-import {
-  background,
-  fontSize,
-  fontWeight,
-  primary
-} from '../assets/styles/styles'
+import { fontSize, fontWeight } from '../assets/styles/fonts'
+import { colors } from '../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../assets/styles/mixins'
+import { ReactElement } from 'react'
 
 const ForecastInfoContainer = styled.div`
-  width: 328px;
-  height: 204px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemSize({ w: '328px', h: '204px' })}
   padding-top: 22px;
   margin-bottom: 48px;
-  color: ${primary.color_1};
-  background: ${background.color_2};
+  color: ${colors.primaryLightgrey};
+  background: ${colors.secondaryDarkBlue};
 `
 
 const Title = styled.h1`
-  font-weight: ${fontWeight.normal};
-  font-size: ${fontSize.size_2};
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_2}` })}
 `
 
 const ForecastValue = styled.div`
-  display: flex;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', ai: 'center' })}
   margin-bottom: 25px;
 `
 
 const Value = styled.div`
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_7}` })}
   margin-right: 5px;
-  font-weight: ${fontWeight.bold};
-  font-size: ${fontSize.size_7};
 `
 
 const Text = styled.span`
-  font-size: ${fontSize.size_6};
-  font-weight: ${fontWeight.bold};
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_6}` })}
 `
 
 const AdditionalInfo = styled.div`
-  max-width: 229px;
-  width: 100%;
+  ${elemSize({ w: '100%', maxw: '229px' })}
 `
 
 interface DetailedForecastInfoProps {
   title: string
   value: number
   text: string
-  additionalInfo: any
+  additionalInfo: ReactElement
 }
 
 const DetailedForecastInfo = ({

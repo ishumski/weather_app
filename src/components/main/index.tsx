@@ -27,10 +27,11 @@ import {
   AditionalInfo,
   WindDirection
 } from './style'
-import CelsiusIcon from '../../assets/images/celsius'
-import FahrenheitIcon from '../../assets/images/fahrenheit'
+import CelsiusIcon from '../../common/icons/celsius'
+
 import Badge from '../../common/badge'
-import { background, primary } from '../../assets/styles/styles'
+import { colors } from '../../assets/styles/colors'
+import FahrenheitIcon from '../../common/icons/fahrenheit'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
@@ -66,8 +67,8 @@ const Main: React.FC = (): JSX.Element => {
               <Badge
                 background={
                   selectedTemperatureUnit === temperatureUnit.CELSIUS
-                    ? `${background.color_5}`
-                    : `${background.color_7}`
+                    ? `${colors.primaryLightgrey}`
+                    : `${colors.secondaryBlueGrey}`
                 }
                 onClick={handleClickToC}
               >
@@ -77,8 +78,8 @@ const Main: React.FC = (): JSX.Element => {
                   viewBox="0 0 32 32"
                   fill={
                     selectedTemperatureUnit === temperatureUnit.CELSIUS
-                      ? `${primary.color_4}`
-                      : `${primary.color_1}`
+                      ? `${colors.tertiaryDarkBlue}`
+                      : `${colors.primaryLightgrey}`
                   }
                 />
               </Badge>
@@ -87,8 +88,8 @@ const Main: React.FC = (): JSX.Element => {
                 onClick={handleClickToF}
                 background={
                   selectedTemperatureUnit === temperatureUnit.CELSIUS
-                    ? `${background.color_7}`
-                    : `${background.color_5}`
+                    ? `${colors.secondaryBlueGrey}`
+                    : `${colors.primaryLightgrey}`
                 }
               >
                 <FahrenheitIcon
@@ -97,8 +98,8 @@ const Main: React.FC = (): JSX.Element => {
                   viewBox="0 0 32 32"
                   fill={
                     selectedTemperatureUnit !== temperatureUnit.CELSIUS
-                      ? `${primary.color_4}`
-                      : `${primary.color_1}`
+                      ? `${colors.tertiaryDarkBlue}`
+                      : `${colors.primaryLightgrey}`
                   }
                 />
               </Badge>
@@ -121,7 +122,9 @@ const Main: React.FC = (): JSX.Element => {
                   return (
                     <ForecastSingleItem
                       key={id}
-                      applicable_date={applicable_date}
+                      applicable_date={new Date(applicable_date)
+                        .toString()
+                        .slice(0, 10)}
                       id={id}
                       weather_state_abbr={`https://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`}
                       max_temp={

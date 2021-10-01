@@ -1,40 +1,32 @@
 import styled from 'styled-components'
-import {
-  background,
-  fontSize,
-  fontWeight,
-  primary
-} from '../assets/styles/styles'
+import { fontSize, fontWeight } from '../assets/styles/fonts'
+import { colors } from '../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../assets/styles/mixins'
 
 const HumidityBarContainer = styled.div`
-  max-width: 229px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  ${elemPlacement({ dp: 'flex', fd: 'column' })}
+  ${elemSize({ w: '100%', maxw: '229px' })}
 `
 
 const BarValue = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${elemPlacement({ dp: 'flex', jc: 'space-between' })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_1}` })}
   margin-bottom: 2px;
-  font-weight: ${fontWeight.bold};
-  font-size: ${fontSize.size_1};
-  color: ${primary.color_2};
+  color: ${colors.secondaryLightgrey};
 `
 
 const HumidityTrack = styled.div`
-  width: 229px;
-  height: 8px;
+  ${elemSize({ w: '229px', h: '8px' })}
   margin-bottom: 4px;
   border-radius: 80px;
-  background: ${background.color_5};
+  background: ${colors.primaryLightgrey};
 `
 
 const HumidityPercentage: any = styled.div`
+  ${elemSize({ h: '8px' })}
   width: ${({ width }: HumidityBarProps) => width}%;
-  height: 8px;
   border-radius: 80px;
-  background: ${background.color_6};
+  background: ${colors.yellow};
 `
 
 const PercentSign = styled.div`

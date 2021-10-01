@@ -1,15 +1,20 @@
-import SVGIcon from '../../common/svg-icon'
+import SVGIconTemplate from './svg-icon-template'
 
-interface SVGElement {
+interface FahrenheitIconProps {
   width: string
   height: string
   viewBox: string
   fill: string
 }
 
-const FahrenheitIcon = ({ width, height, viewBox, fill }: SVGElement) => {
+const FahrenheitIcon = ({
+  width,
+  height,
+  viewBox,
+  fill
+}: FahrenheitIconProps) => {
   return (
-    <SVGIcon
+    <SVGIconTemplate
       width={width}
       height={height}
       viewBox={viewBox}

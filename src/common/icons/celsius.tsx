@@ -1,15 +1,15 @@
-import SVGIcon from '../../common/svg-icon'
+import SVGIconTemplate from './svg-icon-template'
 
-interface SVGElement {
+interface CelsiusIconProps {
   width: string
   height: string
   viewBox: string
   fill: string
 }
 
-const CelsiusIcon = ({ width, height, viewBox, fill }: SVGElement) => {
+const CelsiusIcon = ({ width, height, viewBox, fill }: CelsiusIconProps) => {
   return (
-    <SVGIcon
+    <SVGIconTemplate
       width={width}
       height={height}
       viewBox={viewBox}

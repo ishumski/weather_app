@@ -1,42 +1,32 @@
 import styled from 'styled-components'
-import {
-  background,
-  fontSize,
-  fontWeight,
-  primary
-} from '../assets/styles/styles'
+import { fontSize, fontWeight } from '../assets/styles/fonts'
+import { colors } from '../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../assets/styles/mixins'
 
 const ForecastInfoContainer = styled.div`
-  width: 328px;
-  height: 159px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemSize({ w: '328px', h: '159px' })}
   padding-top: 22px;
-  color: ${primary.color_1};
-  background: ${background.color_2};
+  color: ${colors.primaryLightgrey};
+  background: ${colors.secondaryDarkBlue};
 `
 
 const Title = styled.h1`
-  font-weight: ${fontWeight.normal};
-  font-size: ${fontSize.size_2};
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_2}` })}
 `
 
 const ForecastValue = styled.div`
-  display: flex;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', ai: 'center' })}
   margin-bottom: 31px;
 `
 
 const Value = styled.div`
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_7}` })}
   margin-right: 15px;
-  font-weight: ${fontWeight.bold};
-  font-size: ${fontSize.size_7};
 `
 
 const Text = styled.span`
-  font-size: ${fontSize.size_6};
-  font-weight: ${fontWeight.bold};
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_6}` })}
 `
 
 interface ForecastInfoProps {

@@ -1,85 +1,65 @@
 import styled from 'styled-components'
-import {
-  background,
-  fontSize,
-  fontWeight,
-  primary
-} from '../../assets/styles/styles'
+import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import { colors } from '../../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 
 export const MainContainer = styled.div`
-  flex: 0.7;
-  display: flex;
-  justify-content: center;
-  background: ${background.color_1};
+  ${elemPlacement({ dp: 'flex', fl: '0.7', jc: 'center' })}
+  background: ${colors.primaryDarkBlue};
   z-index: 1;
 `
 
 export const Forecast = styled.div`
-  max-width: 704px;
-  width: 100%;
-  min-width: 670px;
+  ${elemSize({ w: '100%', minw: '670px', maxw: '704px' })}
   padding: 42px 123px 25px 154px;
 `
 
 export const TempContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  ${elemPlacement({ dp: 'flex', jc: 'flex-end' })}
   margin-bottom: 63px;
 `
 
 export const TempBadgets = styled.div`
-  max-width: 92px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  ${elemPlacement({ dp: 'flex', jc: ' space-between' })}
+  ${elemSize({ w: '100%', maxw: '92px' })}
 `
 
 export const WindDirection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', jc: 'center', ai: 'center' })}
 `
 
 export const WindStatusBadge = styled.img`
-  width: 18px;
-  height: 18px;
+  ${elemSize({ w: '18px', h: '18px' })}
   padding: 5px;
   margin: 5.71px;
   border-radius: 50px;
-  background: ${background.color_3};
+  background: ${colors.whiteOpacity};
   transform: rotate(-150deg);
 `
 
 export const ConsolidatedWeatherInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${elemPlacement({ dp: 'flex', jc: 'space-between' })}
 `
 
 export const Header = styled.div`
-  dispalay: flex;
-  flex-direction: column;
-  height: 283px;
+  ${elemPlacement({ dp: 'flex', fd: 'column' })}
+  ${elemSize({ h: '283px' })}
   margin-bottom: 72px;
 `
 
 export const Body = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${elemPlacement({ dp: 'flex', fd: 'column' })}
 `
 
 export const DetailedForecast = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  ${elemPlacement({ dp: 'flex', jc: 'space-between', fw: 'wrap' })}
 `
 
 export const AditionalInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${elemPlacement({ dp: 'flex', fd: 'column' })}
 `
 
 export const WeatherNameTitle = styled.h1`
-  font-weight: ${fontWeight.bold};
-  font-size: ${fontSize.size_4};
-  color: ${primary.color_1};
+  ${elemFonts({ fw: ` ${fontWeight.bold}`, fs: ` ${fontSize.size_4}` })}
+  color: ${colors.primaryLightgrey};
 `

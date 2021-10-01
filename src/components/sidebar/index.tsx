@@ -8,15 +8,18 @@ import {
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
+import CelsiusIcon from '../../common/icons/celsius'
+import Button from '../../common/button'
+import Badge from '../../common/badge'
 import ShowCurrentDate from '../show-current-date'
 import CloudIcon from '../../assets/images/cloudy.png'
 import GeopositionIcon from '../../assets/images/geoposition.svg'
 import LocationIcon from '../../assets/images/location.svg'
 import Dot from '../../assets/images/dot.svg'
+import { colors } from '../../assets/styles/colors'
 import {
   SidebarContaner,
   Header,
-  GeopositionBadge,
   Body,
   SmallCloud,
   MediumCloudRight,
@@ -31,9 +34,6 @@ import {
   LocationTitle,
   WeatherIcon
 } from './style'
-import CelsiusIcon from '../../assets/images/celsius'
-import { background, primary } from '../../assets/styles/styles'
-import Button from '../../common/button'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -69,10 +69,10 @@ const Sidebar: React.FC = (): JSX.Element => {
   return (
     <SidebarContaner>
       <Header>
-        <Button buttonLabel="Search for places" className={''} />
-        <GeopositionBadge background={background.color_3}>
+        <Button buttonLabel="Search for places" />
+        <Badge background={colors.whiteOpacity}>
           <img src={GeopositionIcon} alt="geoposition-icon" />
-        </GeopositionBadge>
+        </Badge>
       </Header>
       <Body>
         <SmallCloud src={CloudIcon} alt="small-cloud-icon" />
@@ -89,7 +89,7 @@ const Sidebar: React.FC = (): JSX.Element => {
             width="60px"
             height="102px"
             viewBox="5 -10 21 30"
-            fill={primary.color_1}
+            fill={colors.primaryLightgrey}
           />
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>

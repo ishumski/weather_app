@@ -1,4 +1,4 @@
-interface SVGElement {
+interface SVGElementProps {
   width: string
   height: string
   viewBox: string
@@ -6,13 +6,13 @@ interface SVGElement {
   d: string
 }
 
-const SVGIcon = ({
+const SVGIconTemplate = ({
   width,
   height,
   viewBox,
   fill,
   d
-}: SVGElement): JSX.Element => {
+}: SVGElementProps): JSX.Element => {
   return (
     <svg
       width={width}
@@ -25,4 +25,4 @@ const SVGIcon = ({
   )
 }
 
-export default SVGIcon
+export default SVGIconTemplate

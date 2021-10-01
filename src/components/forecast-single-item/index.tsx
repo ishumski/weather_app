@@ -1,35 +1,26 @@
 import styled from 'styled-components'
-import {
-  background,
-  fontSize,
-  fontWeight,
-  primary
-} from '../../assets/styles/styles'
+import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import { colors } from '../../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 
 const ItemContainer = styled.div`
-  width: 120px;
-  height: 177px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: ${primary.color_1};
-  background: ${background.color_2};
+  ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemSize({ w: '120px', h: '177px' })}
+  color: ${colors.primaryLightgrey};
+  background: ${colors.secondaryDarkBlue};
 `
 
 const Title = styled.p`
-  font-weight: ${fontWeight.normal};
-  font-size: ${fontSize.size_2};
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_2}` })}
 `
 
 const ItemIcon = styled.img`
-  width: 55px;
-  height: 60px;
+  ${elemSize({ w: '55px', h: '60px' })}
 `
 
 const TemperatureValue = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  ${elemPlacement({ dp: 'flex', jc: 'space-evenly' })}
+  ${elemSize({ w: '100%' })}
 `
 
 interface ForecastSingleItemProps {
@@ -37,7 +28,7 @@ interface ForecastSingleItemProps {
   min_temp: number | string
   id: number
   weather_state_abbr: string
-  applicable_date: string
+  applicable_date: string | number | any
 }
 
 const ForecastSingleItem = ({
