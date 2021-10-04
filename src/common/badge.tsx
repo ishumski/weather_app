@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import styled from 'styled-components'
 import { box } from '../assets/styles/colors'
 import { elemPlacement, elemSize } from '../assets/styles/mixins'
@@ -14,7 +15,7 @@ const BadgeDefault: any = styled.button`
 
 interface BadgeProps {
   background: string
-  children: any
+  children: ReactElement
   onClick?: React.MouseEventHandler
 }
 

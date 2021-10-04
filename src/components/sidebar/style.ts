@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { colors, white } from '../../assets/styles/colors'
+import { colors } from '../../assets/styles/colors'
 import { fontSize, fontWeight } from '../../assets/styles/fonts'
 import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 
 export const SidebarContaner = styled.div`
   ${elemPlacement({ fl: '0.3', dp: 'flex', fd: 'column', ai: 'center' })}
-  padding: 41px 41px 10px;
-  color: ${white};
+  padding: 42px 46px 52px;
+  color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
   position: relative;
 `
@@ -19,7 +19,7 @@ export const Header = styled.div`
 export const Body = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
   ${elemSize({ h: ' 641px' })}
-  margin-top: 95px;
+  margin-top: 109px;
 `
 
 export const SmallCloud = styled.img`
@@ -59,14 +59,15 @@ export const WeatherIcon = styled.img`
 
 export const Temperature = styled.div`
   ${elemSize({ w: '100%' })}
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.size_8}` })}
-  margin-top: 80px;
-  margin-bottom: 0;
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: ` ${fontSize.size_8}` })}
+  color: ${colors.primaryLightgrey};
+  margin-top: 87px;
 `
 
 export const WeatherStateName = styled.h3`
+  ${elemSize({ h: '42px' })}
   ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_5}` })}
-  margin-top: 80px;
+  margin-top: 87px;
   color: ${colors.secondaryLightgrey};
 `
 
@@ -79,8 +80,9 @@ export const Footer = styled.div`
 export const CurrentDate = styled.div`
   ${elemPlacement({ dp: 'flex' })}
   ${elemSize({ w: '100%' })}
-  ${elemFonts({ fs: `${fontSize.size_3}` })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_3}` })}
   margin-bottom: 10px;
+  color: ${colors.primaryBlueGrey};
 `
 
 export const DotIcon = styled.img`
@@ -90,7 +92,7 @@ export const DotIcon = styled.img`
 export const Location = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'center', ai: 'center' })}
   ${elemSize({ h: '35px' })}
-  ${elemFonts({ fs: ` ${fontSize.size_3}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.size_3}` })}
 `
 
 export const LocationTitle = styled.p`

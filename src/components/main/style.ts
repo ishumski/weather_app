@@ -11,12 +11,12 @@ export const MainContainer = styled.div`
 
 export const Forecast = styled.div`
   ${elemSize({ w: '100%', minw: '670px', maxw: '704px' })}
-  padding: 42px 123px 25px 154px;
+  padding: 42px 123px 154px 154px;
 `
 
 export const TempContainer = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'flex-end' })}
-  margin-bottom: 63px;
+  margin-bottom: 66px;
 `
 
 export const TempBadgets = styled.div`
@@ -29,8 +29,8 @@ export const WindDirection = styled.div`
 `
 
 export const WindStatusBadge = styled.img`
-  ${elemSize({ w: '18px', h: '18px' })}
-  padding: 5px;
+  ${elemSize({ w: '15px', h: '15px' })}
+  padding: 4px;
   margin: 5.71px;
   border-radius: 50px;
   background: ${colors.whiteOpacity};
@@ -59,7 +59,13 @@ export const AditionalInfo = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column' })}
 `
 
-export const WeatherNameTitle = styled.h1`
+export const Hightlights = styled.h1`
   ${elemFonts({ fw: ` ${fontWeight.bold}`, fs: ` ${fontSize.size_4}` })}
+  color: ${colors.primaryLightgrey};
+`
+export const CreatedBy = styled.p`
+  ${elemFonts({ fw: ` ${fontWeight.normal}`, fs: ` ${fontSize.size_1}` })}
+  margin-bottom: 25px;
+  text-align: center;
   color: ${colors.primaryLightgrey};
 `

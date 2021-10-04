@@ -18,7 +18,7 @@ const Title = styled.h1`
 `
 
 const ForecastValue = styled.div`
-  ${elemPlacement({ dp: 'flex', ai: 'center' })}
+  ${elemPlacement({ dp: 'flex', ai: 'baseline' })}
   margin-bottom: 25px;
 `
 
@@ -28,7 +28,7 @@ const Value = styled.div`
 `
 
 const Text = styled.span`
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_6}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_5}` })}
 `
 
 const AdditionalInfo = styled.div`

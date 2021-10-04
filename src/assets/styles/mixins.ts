@@ -27,22 +27,22 @@ export const elemPlacement = ({
     ai,
     fw
 }: ElemPlacementProps) => `
-display: ${dp};
-flex: ${fl};
-flex-direction: ${fd};
-justify-content: ${jc};
-align-items: ${ai};
-flex-wrap: ${fw};
+display: ${dp || 'flex'};
+flex: ${fl || '0 1 auto'};
+flex-direction: ${fd || 'row'};
+justify-content: ${jc || 'start'};
+align-items: ${ai || 'normal'};
+flex-wrap: ${fw || 'nowrap'};
 `
 
 export const elemSize = ({ w, h, minw, maxw }: ElemSizeProps) => `
-width: ${w};
-height:${h};
-min-width:${minw};
-max-width:${maxw};
+width: ${w || 'auto'};
+height:${h || 'auto'};
+min-width:${minw || 'auto'};
+max-width:${maxw || 'auto'};
 `
 
 export const elemFonts = ({ fw, fs }: ElemFontsProps) => `
-font-weight: ${fw};
-font-size: ${fs};
+font-weight: ${fw || 'normal'};
+font-size: ${fs || '16px'};
 `

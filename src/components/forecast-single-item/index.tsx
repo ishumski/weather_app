@@ -28,7 +28,7 @@ interface ForecastSingleItemProps {
   min_temp: number | string
   id: number
   weather_state_abbr: string
-  applicable_date: string | number | any
+  applicable_date: string | number
 }
 
 const ForecastSingleItem = ({

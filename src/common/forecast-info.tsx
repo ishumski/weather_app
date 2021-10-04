@@ -17,16 +17,17 @@ const Title = styled.h1`
 
 const ForecastValue = styled.div`
   ${elemPlacement({ dp: 'flex', ai: 'center' })}
-  margin-bottom: 31px;
+  margin-bottom: 37px;
+  color: ${colors.primaryLightgrey};
 `
 
 const Value = styled.div`
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_7}` })}
+  ${elemFonts({ fw: `${fontWeight.bolder}`, fs: `${fontSize.size_7}` })}
   margin-right: 15px;
 `
 
 const Text = styled.span`
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_6}` })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_5}` })}
 `
 
 interface ForecastInfoProps {

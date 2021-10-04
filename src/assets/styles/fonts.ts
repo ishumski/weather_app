@@ -1,6 +1,7 @@
 interface FontWeight {
     normal: string
     bold: string
+    bolder: string
 }
 interface FontSize {
     size_1: string
@@ -15,7 +16,8 @@ interface FontSize {
 
 export const fontWeight: FontWeight = {
     normal: '500',
-    bold: '600'
+    bold: '600',
+    bolder: '700'
 }
 
 export const fontSize: FontSize = {
