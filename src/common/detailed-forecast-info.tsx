@@ -23,7 +23,7 @@ const ForecastValue = styled.div`
 `
 
 const Value = styled.div`
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_7}` })}
+  ${elemFonts({ fw: `${fontWeight.bolder}`, fs: `${fontSize.size_7}` })}
   margin-right: 5px;
 `
 
