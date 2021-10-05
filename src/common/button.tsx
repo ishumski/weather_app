@@ -15,12 +15,19 @@ export const CustomButton: any = styled.button`
 `
 
 interface ButtonProps {
-  buttonLabel: string
+  buttonLabel?: string
   className?: string
+  onClick?: any
 }
 
-const Button = ({ buttonLabel, className }: ButtonProps): JSX.Element => (
-  <CustomButton className={className}>{buttonLabel}</CustomButton>
+const Button = ({
+  buttonLabel,
+  className,
+  onClick
+}: ButtonProps): JSX.Element => (
+  <CustomButton onClick={onClick} className={className}>
+    {buttonLabel}
+  </CustomButton>
 )
 
 export default Button

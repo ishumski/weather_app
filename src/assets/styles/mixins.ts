@@ -19,6 +19,14 @@ interface ElemFontsProps {
     fs?: string
 }
 
+interface elemPositionProps {
+    pt?: string
+    t?: string
+    b?: string
+    l?: string
+    r?: string
+}
+
 export const elemPlacement = ({
     dp,
     fl,
@@ -45,4 +53,12 @@ max-width:${maxw || 'auto'};
 export const elemFonts = ({ fw, fs }: ElemFontsProps) => `
 font-weight: ${fw || 'normal'};
 font-size: ${fs || '16px'};
+`
+
+export const elemPosition = ({ pt, t, b, l, r }: elemPositionProps) => `
+position: ${pt || 'static'};
+top: ${t || 'auto'};
+bottom: ${b || 'auto'};
+left: ${l || 'auto'};
+right: ${r || 'auto'};
 `

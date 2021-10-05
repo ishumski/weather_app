@@ -1,14 +1,19 @@
 import styled from 'styled-components'
 import { colors } from '../../assets/styles/colors'
 import { fontSize, fontWeight } from '../../assets/styles/fonts'
-import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
+import {
+  elemFonts,
+  elemPlacement,
+  elemPosition,
+  elemSize
+} from '../../assets/styles/mixins'
 
 export const SidebarContaner = styled.div`
   ${elemPlacement({ fl: '0.3', dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemPosition({ pt: 'relative' })}
   padding: 42px 46px 52px;
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
-  position: relative;
 `
 
 export const Header = styled.div`
@@ -24,32 +29,24 @@ export const Body = styled.div`
 
 export const SmallCloud = styled.img`
   ${elemSize({ w: '147px', h: '109px' })}
-  top: 370px;
-  right: -11px;
+  ${elemPosition({ pt: 'absolute', t: '370px', r: '-11px' })}
   opacity: 0.1;
-  position: absolute;
 `
 
 export const MediumCloudRight = styled.img`
-  position: absolute;
+  ${elemPosition({ pt: 'absolute', t: '116px', r: '-80px' })}
   opacity: 0.1;
-  top: 116px;
-  right: -80px;
 `
 
 export const MediumCloudLeft = styled.img`
-  position: absolute;
+  ${elemPosition({ pt: 'absolute', t: '103px', l: '-89px' })}
   opacity: 0.1;
-  top: 103px;
-  left: -89px;
 `
 
 export const LargeCloud = styled.img`
   ${elemSize({ w: '248px', h: '183px' })}
-  position: absolute;
+  ${elemPosition({ pt: 'absolute', t: '266px', l: '-111px' })}
   opacity: 0.1;
-  top: 266px;
-  left: -111px;
 `
 
 export const WeatherIcon = styled.img`

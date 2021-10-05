@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/root-reducer'
 import { getForecast } from '../../api'
@@ -34,8 +34,11 @@ import {
   LocationTitle,
   WeatherIcon
 } from './style'
+import SidebarSearch from '../sidebar-search/indxex'
 
 const Sidebar: React.FC = (): JSX.Element => {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+
   const dispatch = useDispatch()
 
   useEffect((): void => {
@@ -66,10 +69,13 @@ const Sidebar: React.FC = (): JSX.Element => {
 
   const fixedTemp: number = parseFloat(the_temp.toFixed(1))
 
+  const handleOpenModal = () => setIsModalVisible(true)
+  const handleCloseModal = () => setIsModalVisible(false)
+
   return (
     <SidebarContaner>
       <Header>
-        <Button buttonLabel="Search for places" />
+        <Button buttonLabel="Search for places" onClick={handleOpenModal} />
         <Badge background={colors.whiteOpacity}>
           <img src={GeopositionIcon} alt="geoposition-icon" />
         </Badge>
@@ -105,6 +111,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           <LocationTitle>{title}</LocationTitle>
         </Location>
       </Footer>
+      {isModalVisible && <SidebarSearch handleCloseModal={handleCloseModal} />}
     </SidebarContaner>
   )
 }
