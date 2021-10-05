@@ -28,13 +28,13 @@ export const WindDirection = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'center', ai: 'center' })}
 `
 
-export const WindStatusBadge = styled.img`
+export const WindStatusBadge: any = styled.img`
   ${elemSize({ w: '15px', h: '15px' })}
   padding: 4px;
   margin: 5.71px;
   border-radius: 50px;
   background: ${colors.whiteOpacity};
-  transform: rotate(-150deg);
+  transform: rotate(${(props: any) => props.rotate});
 `
 
 export const ConsolidatedWeatherInfo = styled.div`
