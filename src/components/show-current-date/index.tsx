@@ -1,12 +1,11 @@
 const ShowCurrentDate: React.FC = (): JSX.Element => {
-  const newDate = new Date()
+  const newDate: Array<string> = new Date().toString().slice(0, 10).split(' ')
 
-  let formatter = new Intl.DateTimeFormat('en', {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short'
-  })
-  return <p>{formatter.format(newDate)}</p>
+  const [weekday, month, day]: Array<string> = newDate
+  const formattedDay: string = day[0] === '0' ? day.slice(1) : day
+  const dateString: string = `${weekday}, ${formattedDay} ${month}`
+
+  return <p>{dateString}</p>
 }
 
 export default ShowCurrentDate

@@ -1,68 +1,33 @@
-import styled from "styled-components";
-
-import Badge from "../../common/badge";
-import Button from "../../common/button";
+import styled from 'styled-components'
+import { colors } from '../../assets/styles/colors'
+import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 
 export const SidebarContaner = styled.div`
-  flex: 0.3;
-  background-color: #1e213a;
-  color: #ffffff;
-  padding: 41px 41px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${elemPlacement({ fl: '0.3', dp: 'flex', fd: 'column', ai: 'center' })}
+  padding: 42px 46px 52px;
+  color: ${colors.primaryLightgrey};
+  background: ${colors.secondaryDarkBlue};
   position: relative;
 `
 
 export const Header = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const SearchButton: any = styled(Button)`
-  width: 161px;
-  height: 40px;
-  background: #6e707a;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: #E7E7EB;
-  border: none;
-  cursor: pointer;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-`
-
-export const GeopositionBadge: any = styled(Badge)`
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border: none;
-  cursor: pointer;
-  color: #E7E7EB;
-  background: #6e707a;
+  ${elemPlacement({ dp: 'flex', jc: 'space-between', ai: 'center' })}
+  ${elemSize({ w: '100%' })}
 `
 
 export const Body = styled.div`
-  height:641px;
-  margin-top: 95px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemSize({ h: ' 641px' })}
+  margin-top: 109px;
 `
 
 export const SmallCloud = styled.img`
-  position: absolute;
-  opacity: 0.1;
+  ${elemSize({ w: '147px', h: '109px' })}
   top: 370px;
   right: -11px;
-  width: 147px;
-  height: 109px;
+  opacity: 0.1;
+  position: absolute;
 `
 
 export const MediumCloudRight = styled.img`
@@ -80,66 +45,57 @@ export const MediumCloudLeft = styled.img`
 `
 
 export const LargeCloud = styled.img`
+  ${elemSize({ w: '248px', h: '183px' })}
   position: absolute;
   opacity: 0.1;
   top: 266px;
   left: -111px;
-  width: 248px;
-  height: 183px;
 `
+
 export const WeatherIcon = styled.img`
-  width: 202px;
-  height:234px;
+  ${elemSize({ w: '202px', h: '234px' })}
   opacity: none;
 `
 
 export const Temperature = styled.div`
-  width: 100%;
-  margin-top: 80px;
-  margin-bottom: 0;
-  font-family: Raleway;
-  font-weight: 600;
-  font-size: 144px;
+  ${elemSize({ w: '100%' })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: ` ${fontSize.size_8}` })}
+  color: ${colors.primaryLightgrey};
+  margin-top: 87px;
 `
 
 export const WeatherStateName = styled.h3`
-  margin-top: 80px;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 36px;
-  color: #a09fb1;
+  ${elemSize({ h: '42px' })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_5}` })}
+  margin-top: 87px;
+  color: ${colors.secondaryLightgrey};
 `
 
 export const Footer = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 600;
-  color: #88869d;
+  ${elemPlacement({ dp: 'flex', fd: 'column' })}
+  ${elemFonts({ fw: `${fontWeight.bold}` })}
+  color: ${colors.primaryBlueGrey};
 `
 
 export const CurrentDate = styled.div`
-  width: 100%;
-  display: flex;
-  font-size: 18px;
-  height: 57;
-  margin-bottom:10px;
+  ${elemPlacement({ dp: 'flex' })}
+  ${elemSize({ w: '100%' })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_3}` })}
+  margin-bottom: 10px;
+  color: ${colors.primaryBlueGrey};
 `
+
 export const DotIcon = styled.img`
-  margin: 0 16px;  
+  margin: 0 16px;
 `
 
 export const Location = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  font-size: 18px;
+  ${elemPlacement({ dp: 'flex', jc: 'center', ai: 'center' })}
+  ${elemSize({ h: '35px' })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.size_3}` })}
 `
 
 export const LocationTitle = styled.p`
+  ${elemSize({ w: '47px' })}
   margin-left: 9px;
-  width: 47px;
 `

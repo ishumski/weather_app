@@ -1,6 +1,5 @@
 import { setForecast } from "../store/action"
-
-import { CurrentLocationData, ForecastData, } from "../types/interfaces"
+import { CurrentLocationData, ForecastData } from "../types/interfaces"
 
 export const getForecast = (param: string) => (dispatch: any) => {
     const apiUrl: string = `api/location/search/?${param}`

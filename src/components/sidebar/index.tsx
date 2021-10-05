@@ -1,28 +1,25 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { RootState } from '../../store/root-reducer'
-
 import { getForecast } from '../../api'
-
+import { getParameterByCoords } from '../../utils'
 import {
   ConsolidatedWeather,
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
+import CelsiusIcon from '../../common/icons/celsius'
+import Button from '../../common/button'
+import Badge from '../../common/badge'
 import ShowCurrentDate from '../show-current-date'
-
 import CloudIcon from '../../assets/images/cloudy.png'
 import GeopositionIcon from '../../assets/images/geoposition.svg'
-import CelsiusIcon from '../../assets/images/celsius.svg'
 import LocationIcon from '../../assets/images/location.svg'
 import Dot from '../../assets/images/dot.svg'
-
+import { colors } from '../../assets/styles/colors'
 import {
   SidebarContaner,
   Header,
-  SearchButton,
-  GeopositionBadge,
   Body,
   SmallCloud,
   MediumCloudRight,
@@ -37,7 +34,6 @@ import {
   LocationTitle,
   WeatherIcon
 } from './style'
-import { getParameterByCoords } from '../../utils'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -53,7 +49,6 @@ const Sidebar: React.FC = (): JSX.Element => {
 
         dispatch(
           getForecast(getParameterByCoords(fixedLatitude, fixedLongitude))
-
         )
       }
     )
@@ -75,8 +70,10 @@ const Sidebar: React.FC = (): JSX.Element => {
   return (
     <SidebarContaner>
       <Header>
-        <SearchButton buttonLabel="Search for places"></SearchButton>
-        <GeopositionBadge icon={GeopositionIcon}></GeopositionBadge>
+        <Button buttonLabel="Search for places" />
+        <Badge background={colors.whiteOpacity}>
+          <img src={GeopositionIcon} alt="geoposition-icon" />
+        </Badge>
       </Header>
       <Body>
         <SmallCloud src={CloudIcon} alt="small-cloud-icon" />
@@ -89,7 +86,12 @@ const Sidebar: React.FC = (): JSX.Element => {
         />
         <Temperature>
           {fixedTemp}
-          <img src={CelsiusIcon} alt="celsius-icon" />
+          <CelsiusIcon
+            width="60px"
+            height="102px"
+            viewBox="5 -10 21 30"
+            fill={colors.primaryLightgrey}
+          />
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>
       </Body>
