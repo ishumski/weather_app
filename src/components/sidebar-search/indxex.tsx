@@ -13,14 +13,16 @@ import {
   SidebarSearchContainer
 } from './style'
 
-const SidebarSearch = ({ handleCloseModal }: any) => {
+interface Props {
+  handleCloseModal: () => void
+}
+
+const SidebarSearch = ({ handleCloseModal }: Props) => {
   const [cityName, setCityName] = useState<string>('')
 
   const dispatch = useDispatch()
 
-  const handleCitySearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
+  const handleCitySearch = () => {
     if (!cityName) {
       return
     } else {
@@ -29,8 +31,8 @@ const SidebarSearch = ({ handleCloseModal }: any) => {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = e.target
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = event.target
     setCityName(value)
   }
 

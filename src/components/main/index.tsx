@@ -10,7 +10,7 @@ import {
 import ForecastSingleItem from '../forecast-single-item'
 import ForecastInfo from '../../common/forecast-info'
 import DetailedForecastInfo from '../../common/detailed-forecast-info'
-import { changeCelsiusToFahrenheit, setWindDirection } from '../../utils'
+import { changeCelsiusToFahrenheit } from '../../utils'
 import HumidityBar from '../../common/humidity-bar'
 import WindStatusIcon from '../../assets/images/navigation.svg'
 import {
@@ -43,6 +43,7 @@ const Main: React.FC = (): JSX.Element => {
   const {
     wind_speed,
     wind_direction_compass,
+    wind_direction,
     humidity,
     visibility,
     air_pressure
@@ -161,7 +162,7 @@ const Main: React.FC = (): JSX.Element => {
               additionalInfo={
                 <WindDirection>
                   <WindStatusBadge
-                    rotate={`${setWindDirection(wind_direction_compass)}`}
+                    rotate={`${wind_direction}deg`}
                     src={WindStatusIcon}
                     alt="wind-icon"
                   />

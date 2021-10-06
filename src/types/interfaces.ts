@@ -1,6 +1,5 @@
 import { forecastDataConstance } from "../store/forecast-data/types";
 import { Action as ReduxAction } from "redux";
-import { MouseEventHandler } from "react";
 
 export interface ForecastInitialState {
     forecastData: ForecastData
