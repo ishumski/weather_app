@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getForecast } from '../../api'
 import Badge from '../../common/badge'
@@ -24,6 +24,14 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
 
   const dispatch = useDispatch()
 
+  useEffect((): void => {
+    const getCityData: Array<string> =
+      JSON.parse(localStorage['cityData']) === null
+        ? []
+        : JSON.parse(localStorage['cityData'] || null)
+    setCityHistory(getCityData)
+  }, [])
+
   const handleCitySearch = () => {
     if (!cityName) {
       return
@@ -31,12 +39,13 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
       handleCloseModal()
       dispatch(getForecast(getParameterByCityName(cityName)))
       setCityHistory([...cityHistory, cityName])
-      localStorage.setItem('data', JSON.stringify([...cityHistory, cityName]))
+      localStorage.setItem(
+        'cityData',
+        JSON.stringify([...cityHistory, cityName])
+      )
       setCityName('')
     }
   }
-
-  const savedCityHistory = JSON.parse(localStorage['data'] || null)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target
@@ -63,16 +72,17 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
         />
         <SearchLocationButton buttonLabel="Search" onClick={handleCitySearch} />
       </SearchLocation>
-      {savedCityHistory?.length &&
-        savedCityHistory.map((elem: string, idx: number) => {
-          return (
-            <SearchHistorySingleItem
-              key={idx}
-              city={elem}
-              onClick={() => handleForecastSearchByCurrentCity(elem)}
-            />
-          )
-        })}
+      {cityHistory?.length
+        ? cityHistory.map((elem: string, idx: number) => {
+            return (
+              <SearchHistorySingleItem
+                key={idx}
+                city={elem}
+                onClick={() => handleForecastSearchByCurrentCity(elem)}
+              />
+            )
+          })
+        : null}
     </SidebarSearchContainer>
   )
 }
