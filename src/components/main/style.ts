@@ -63,6 +63,11 @@ export const Hightlights = styled.h1`
   ${elemFonts({ fw: ` ${fontWeight.bold}`, fs: ` ${fontSize.size_4}` })}
   color: ${colors.primaryLightgrey};
 `
+
+export const WindDirectionCompas = styled.p`
+  ${elemSize({ w: '38px' })}
+`
+
 export const CreatedBy = styled.p`
   ${elemFonts({ fw: ` ${fontWeight.normal}`, fs: ` ${fontSize.size_1}` })}
   margin-bottom: 25px;

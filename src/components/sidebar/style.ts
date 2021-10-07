@@ -10,6 +10,7 @@ import {
 
 export const SidebarContaner = styled.div`
   ${elemPlacement({ fl: '0.3', dp: 'flex', fd: 'column', ai: 'center' })}
+  ${elemSize({ minw: '375px' })}
   ${elemPosition({ pt: 'relative' })}
   padding: 42px 46px 52px;
   color: ${colors.primaryLightgrey};

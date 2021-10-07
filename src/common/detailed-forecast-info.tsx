@@ -19,6 +19,7 @@ const Title = styled.h1`
 
 const ForecastValue = styled.div`
   ${elemPlacement({ dp: 'flex', ai: 'baseline' })}
+  ${elemSize({ h: '75px' })}
   margin-bottom: 25px;
 `
 

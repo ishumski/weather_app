@@ -10,9 +10,13 @@ import {
 import ForecastSingleItem from '../forecast-single-item'
 import ForecastInfo from '../../common/forecast-info'
 import DetailedForecastInfo from '../../common/detailed-forecast-info'
-import { changeCelsiusToFahrenheit } from '../../utils'
+import Badge from '../../common/badge'
 import HumidityBar from '../../common/humidity-bar'
+import CelsiusIcon from '../../common/icons/celsius'
+import FahrenheitIcon from '../../common/icons/fahrenheit'
 import WindStatusIcon from '../../assets/images/navigation.svg'
+import { changeCelsiusToFahrenheit } from '../../utils'
+import { colors } from '../../assets/styles/colors'
 import {
   Body,
   ConsolidatedWeatherInfo,
@@ -26,13 +30,9 @@ import {
   WindStatusBadge,
   AditionalInfo,
   WindDirection,
-  CreatedBy
+  CreatedBy,
+  WindDirectionCompas
 } from './style'
-import CelsiusIcon from '../../common/icons/celsius'
-
-import Badge from '../../common/badge'
-import { colors } from '../../assets/styles/colors'
-import FahrenheitIcon from '../../common/icons/fahrenheit'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
@@ -166,7 +166,9 @@ const Main: React.FC = (): JSX.Element => {
                     src={WindStatusIcon}
                     alt="wind-icon"
                   />
-                  {wind_direction_compass}
+                  <WindDirectionCompas>
+                    {wind_direction_compass}
+                  </WindDirectionCompas>
                 </WindDirection>
               }
             />

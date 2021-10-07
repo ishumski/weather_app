@@ -1,8 +1,8 @@
 interface SVGElementProps {
-  width: string
-  height: string
-  viewBox: string
-  fill: string
+  width?: string
+  height?: string
+  viewBox?: string
+  fill?: string
   d: string
 }
 
