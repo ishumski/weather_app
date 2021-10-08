@@ -25,11 +25,10 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
   const dispatch = useDispatch()
 
   useEffect((): void => {
-    const getCityData: Array<string> =
-      JSON.parse(localStorage['cityData']) === null
-        ? []
-        : JSON.parse(localStorage['cityData'] || null)
-    setCityHistory(getCityData)
+    const getCityData: string | null = localStorage.getItem('cityData')
+    const historyCityData: Array<string> =
+      getCityData === null ? [] : JSON.parse(getCityData)
+    setCityHistory(historyCityData)
   }, [])
 
   const handleCitySearch = () => {
