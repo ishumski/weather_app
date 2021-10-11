@@ -41,7 +41,7 @@ const Sidebar: React.FC = (): JSX.Element => {
 
   const dispatch = useDispatch()
 
-  const getCurrentGeoposition = (): void => {
+  useEffect((): void => {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
         const { latitude, longitude }: GeolocationCoordinates = position.coords
@@ -54,10 +54,6 @@ const Sidebar: React.FC = (): JSX.Element => {
         )
       }
     )
-  }
-
-  useEffect((): void => {
-    getCurrentGeoposition()
   }, [])
 
   const { forecastData }: ForecastInitialState = useSelector(
@@ -73,14 +69,14 @@ const Sidebar: React.FC = (): JSX.Element => {
 
   const fixedTemp: number = parseFloat(the_temp.toFixed(1))
 
-  const handleOpenModal = (): void => setIsModalVisible(true)
-  const handleCloseModal = (): void => setIsModalVisible(false)
+  const handleOpenModal = () => setIsModalVisible(true)
+  const handleCloseModal = () => setIsModalVisible(false)
 
   return (
     <SidebarContaner>
       <Header>
         <Button buttonLabel="Search for places" onClick={handleOpenModal} />
-        <Badge background={colors.whiteOpacity} onClick={getCurrentGeoposition}>
+        <Badge background={colors.whiteOpacity}>
           <img src={GeopositionIcon} alt="geoposition-icon" />
         </Badge>
       </Header>

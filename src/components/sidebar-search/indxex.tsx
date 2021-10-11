@@ -37,10 +37,10 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
     } else {
       handleCloseModal()
       dispatch(getForecast(getParameterByCityName(cityName)))
-      setCityHistory([...cityHistory, cityName])
+      setCityHistory([cityName, ...cityHistory].splice(0, 9))
       localStorage.setItem(
         'cityData',
-        JSON.stringify([...cityHistory, cityName])
+        JSON.stringify([cityName, ...cityHistory].splice(0, 9))
       )
       setCityName('')
     }
@@ -52,6 +52,7 @@ const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
   }
 
   const handleForecastSearchByCurrentCity = (param: string) => {
+    handleCloseModal()
     dispatch(getForecast(getParameterByCityName(param)))
   }
 
