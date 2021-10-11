@@ -8,6 +8,10 @@ const ItemContainer = styled.div`
   ${elemSize({ w: '120px', h: '177px' })}
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
+
+  @media (max-width: 1100px) {
+    margin-bottom: 32px;
+  }
 `
 
 const Title = styled.p`
@@ -21,6 +25,10 @@ const ItemIcon = styled.img`
 const TemperatureValue = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'space-evenly' })}
   ${elemSize({ w: '100%' })}
+`
+
+const MinTempValue = styled.p`
+  color: ${colors.secondaryLightgrey};
 `
 
 interface ForecastSingleItemProps {
@@ -44,7 +52,7 @@ const ForecastSingleItem = ({
       <ItemIcon src={weather_state_abbr} alt="forecast-icon" />
       <TemperatureValue>
         <p>{max_temp}</p>
-        <p>{min_temp}</p>
+        <MinTempValue>{min_temp}</MinTempValue>
       </TemperatureValue>
     </ItemContainer>
   )

@@ -10,13 +10,22 @@ export const MainContainer = styled.div`
 `
 
 export const Forecast = styled.div`
-  ${elemSize({ w: '100%', minw: '670px', maxw: '704px' })}
-  padding: 42px 123px 154px 154px;
+  ${elemSize({ w: '100%', maxw: '704px' })}
+  padding: 42px 25px 25px;
+
+  @media (max-width: 1100px) {
+    ${elemSize({ maxw: '328px' })}
+    padding: 25px 23px 10px;
+  }
 `
 
 export const TempContainer = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'flex-end' })}
   margin-bottom: 66px;
+
+  @media (max-width: 1100px) {
+    ${elemPlacement({ dp: 'none' })}
+  }
 `
 
 export const TempBadgets = styled.div`
@@ -39,12 +48,22 @@ export const WindStatusBadge: any = styled.img`
 
 export const ConsolidatedWeatherInfo = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'space-between' })}
+
+  @media (max-width: 1100px) {
+    ${elemPlacement({ dp: 'flex', jc: 'space-between', fw: 'wrap' })}
+    margin: 0 30px;
+  }
 `
 
 export const Header = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column' })}
   ${elemSize({ h: '283px' })}
   margin-bottom: 72px;
+
+  @media (max-width: 1100px) {
+    ${elemSize({ h: '580px' })}
+    margin-bottom: 51px;
+  }
 `
 
 export const Body = styled.div`

@@ -14,6 +14,9 @@ export const SidebarSearchContainer = styled.div`
   ${elemPosition({ pt: 'absolute', t: '0', b: '0', l: '0', r: '0' })}
   padding: 19.21px 46px 0px 47px;
   background: ${colors.secondaryDarkBlue};
+  @media (max-width: 1100px){
+    padding: 18px 11px;
+  }
 `
 
 export const Header = styled.div`
@@ -24,6 +27,10 @@ export const SearchLocation = styled.form`
   ${elemPlacement({ dp: 'flex' })}
   ${elemSize({ h: '48px' })}
   margin-top: 45.21px;
+
+  @media (max-width: 1100px){
+    margin-top: 29.41px;
+  }
 `
 
 export const SearchLocationInput: any = styled.input`
@@ -39,7 +46,7 @@ export const SearchLocationInput: any = styled.input`
   background-color: ${colors.transparent};
   outline: none;
 `
-export const SearchLocationButton = styled(Button)`
+export const SearchLocationButton: any = styled(Button)`
   ${elemPlacement({ dp: 'flex', fl: '0.3', jc: 'center', ai: 'center' })}
   ${elemSize({ w: '86px', h: ' 48px' })}
   ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_2}` })}

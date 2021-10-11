@@ -56,9 +56,9 @@ font-size: ${fs || '16px'};
 `
 
 export const elemPosition = ({ pt, t, b, l, r }: elemPositionProps) => `
-position: ${pt || 'static'};
-top: ${t || 'auto'};
-bottom: ${b || 'auto'};
-left: ${l || 'auto'};
-right: ${r || 'auto'};
+position: ${pt || 'normal'};
+top: ${t || 'normal'};
+bottom: ${b || 'normal'};
+left: ${l || 'normal'};
+right: ${r || 'normal'};
 `

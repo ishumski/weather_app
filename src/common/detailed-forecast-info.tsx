@@ -11,6 +11,10 @@ const ForecastInfoContainer = styled.div`
   margin-bottom: 48px;
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
+
+  @media (max-width: 1100px) {
+    margin-bottom: 32px;
+  }
 `
 
 const Title = styled.h1`

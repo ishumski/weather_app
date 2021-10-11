@@ -9,6 +9,10 @@ const ForecastInfoContainer = styled.div`
   padding-top: 22px;
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
+
+  @media (max-width: 1100px) {
+    margin-bottom: 32px;
+  }
 `
 
 const Title = styled.h1`
@@ -27,7 +31,7 @@ const Value = styled.div`
 `
 
 const Text = styled.span`
-  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_5}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_5}` })}
 `
 
 interface ForecastInfoProps {

@@ -32,6 +32,7 @@ import {
   DotIcon,
   Location,
   LocationTitle,
+  TempValue,
   WeatherIcon
 } from './style'
 import SidebarSearch from '../sidebar-search/indxex'
@@ -90,12 +91,12 @@ const Sidebar: React.FC = (): JSX.Element => {
           alt="weather-icon"
         />
         <Temperature>
-          {fixedTemp}
+          <TempValue> {fixedTemp}</TempValue>
           <CelsiusIcon
             width="60px"
             height="102px"
             viewBox="5 -10 21 30"
-            fill={colors.primaryLightgrey}
+            fill={colors.secondaryLightgrey}
           />
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>
