@@ -8,10 +8,9 @@ import {
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
-import CelsiusIcon from '../../common/icons/celsius'
 import Button from '../../common/button'
 import Badge from '../../common/badge'
-import ShowCurrentDate from '../show-current-date'
+import ShowCurrentDate from '../show-current-date/ShowCurrentDate'
 import CloudIcon from '../../assets/images/cloudy.png'
 import GeopositionIcon from '../../assets/images/geoposition.svg'
 import LocationIcon from '../../assets/images/location.svg'
@@ -26,6 +25,7 @@ import {
   MediumCloudLeft,
   LargeCloud,
   Temperature,
+  CelsiusIcon,
   WeatherStateName,
   Footer,
   CurrentDate,
@@ -35,7 +35,7 @@ import {
   TempValue,
   WeatherIcon
 } from './style'
-import SidebarSearch from '../sidebar-search/indxex'
+import SidebarSearch from '../sidebar-search/SidebarSearch'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
@@ -92,12 +92,7 @@ const Sidebar: React.FC = (): JSX.Element => {
         />
         <Temperature>
           <TempValue> {fixedTemp}</TempValue>
-          <CelsiusIcon
-            width="60px"
-            height="102px"
-            viewBox="5 -10 21 30"
-            fill={colors.secondaryLightgrey}
-          />
+          <CelsiusIcon>°C</CelsiusIcon>
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>
       </Body>

@@ -14,7 +14,7 @@ export const SidebarSearchContainer = styled.div`
   ${elemPosition({ pt: 'absolute', t: '0', b: '0', l: '0', r: '0' })}
   padding: 19.21px 46px 0px 47px;
   background: ${colors.secondaryDarkBlue};
-  @media (max-width: 1100px){
+  @media (max-width: 1150px){
     padding: 18px 11px;
   }
 `
@@ -28,7 +28,7 @@ export const SearchLocation = styled.form`
   ${elemSize({ h: '48px' })}
   margin-top: 45.21px;
 
-  @media (max-width: 1100px){
+  @media (max-width: 1150px){
     margin-top: 29.41px;
   }
 `
@@ -36,7 +36,7 @@ export const SearchLocation = styled.form`
 export const SearchLocationInput: any = styled.input`
   ${elemPlacement({ fl: '0.7' })}
   ${elemSize({ w: '100%' })}
-  ${elemFonts({ fw: fontWeight.bold, fs: fontSize.size_3 })}
+  ${elemFonts({ fw: fontWeight.bold, fs: fontSize.secondaryRegular })}
   background: url(${SearchIcon}) no-repeat scroll 15px 15px;
   padding-left: 48px;
   margin-right: 12px;
@@ -49,7 +49,7 @@ export const SearchLocationInput: any = styled.input`
 export const SearchLocationButton: any = styled(Button)`
   ${elemPlacement({ dp: 'flex', fl: '0.3', jc: 'center', ai: 'center' })}
   ${elemSize({ w: '86px', h: ' 48px' })}
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_2}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.primaryRegular}` })}
   background: ${colors.blue};
   color: ${colors.primaryLightgrey};
 `

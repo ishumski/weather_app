@@ -5,7 +5,7 @@ import { elemFonts, elemSize } from '../assets/styles/mixins'
 
 export const CustomButton: any = styled.button`
   ${elemSize({ w: '161px', h: '40px' })}
-  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_2}` })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.primaryRegular}` })}
   font-family: Raleway;
   border: none;
   color: ${colors.primaryLightgrey};

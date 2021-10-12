@@ -4,14 +4,14 @@ interface FontWeight {
     bolder: string
 }
 interface FontSize {
-    size_1: string
-    size_2: string
-    size_3: string
-    size_4: string
-    size_5: string
-    size_6: string
-    size_7: string
-    size_8: string
+    small: string
+    primaryRegular: string
+    secondaryRegular: string
+    primaryIncreased: string
+    secondaryIncreased: string
+    large: string
+    huge: string
+    giant: string
 }
 
 export const fontWeight: FontWeight = {
@@ -21,12 +21,12 @@ export const fontWeight: FontWeight = {
 }
 
 export const fontSize: FontSize = {
-    size_1: '12px',
-    size_2: '16px',
-    size_3: '18px',
-    size_4: '24px',
-    size_5: '36px',
-    size_6: '40px',
-    size_7: '64px',
-    size_8: '144px'
+    small: '12px',
+    primaryRegular: '16px',
+    secondaryRegular: '18px',
+    primaryIncreased: '24px',
+    secondaryIncreased: '36px',
+    large: '48px',
+    huge: '64px',
+    giant: '144px'
 }

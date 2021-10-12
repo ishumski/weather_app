@@ -15,7 +15,7 @@ export const SidebarContaner = styled.div`
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     padding: 18px 11px;
   }
 `
@@ -29,7 +29,7 @@ export const Body = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column', ai: 'center' })}
   margin-top: 109px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     margin-top: 76px;
   }
 `
@@ -39,7 +39,7 @@ export const SmallCloud = styled.img`
   ${elemPosition({ pt: 'absolute', t: '370px', r: '-11px' })}
   opacity: 0.1;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ w: '127.45px', h: '94.51px' })}
     ${elemPosition({ t: '289.49px' })}
   }
@@ -49,7 +49,7 @@ export const MediumCloudRight = styled.img`
   ${elemPosition({ pt: 'absolute', t: '116px', r: '-80px' })}
   opacity: 0.1;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ w: '176.01px', h: '130.05px' })}
     ${elemPosition({ t: '69.27px' })}
   }
@@ -59,7 +59,7 @@ export const MediumCloudLeft = styled.img`
   ${elemPosition({ pt: 'absolute', t: '103px', l: '-89px' })}
   opacity: 0.1;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ w: '176.01px', h: '130.05px' })}
     ${elemPosition({ t: '58px' })}
   }
@@ -70,7 +70,7 @@ export const LargeCloud = styled.img`
   ${elemPosition({ pt: 'absolute', t: '266px', l: '-111px' })}
   opacity: 0.1;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ w: '215.02px', h: '158.66px' })}
     ${elemPosition({ t: '199.32px' })}
   }
@@ -80,33 +80,44 @@ export const WeatherIcon = styled.img`
   ${elemSize({ w: '202px', h: '234px' })}
   opacity: none;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ w: '150px', h: '174px' })}
   }
 `
 
 export const Temperature = styled.div`
-  ${elemPlacement({ dp: 'flex', ai: 'center' })}
-  ${elemFonts({ fw: `${fontWeight.normal}`, fs: ` ${fontSize.size_8}` })}
+  ${elemPlacement({ dp: 'flex', ai: 'baseline' })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: ` ${fontSize.giant}` })}
   color: ${colors.primaryLightgrey};
   margin-top: 87px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     margin-top: 40px;
   }
 `
+
+export const CelsiusIcon = styled.p`
+  ${elemFonts({ fs: `${fontSize.large}` })}
+  margin: 0px;
+  font-family: Calibri;
+  color: ${colors.secondaryLightgrey};
+`
+
 export const TempValue = styled.p`
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.size_8}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.giant}` })}
   margin: 0px;
 `
 
 export const WeatherStateName = styled.h3`
   ${elemSize({ h: '42px' })}
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_5}` })}
+  ${elemFonts({
+  fw: `${fontWeight.bold}`,
+  fs: `${fontSize.secondaryIncreased}`
+})}
   margin-top: 87px;
   color: ${colors.secondaryLightgrey};
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     margin: 0px;
     margin-top: 23px;
   }
@@ -121,11 +132,14 @@ export const Footer = styled.div`
 export const CurrentDate = styled.div`
   ${elemPlacement({ dp: 'flex', ai: 'center' })}
   ${elemSize({ w: '100%' })}
-  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.size_3}` })}
+  ${elemFonts({
+  fw: `${fontWeight.normal}`,
+  fs: `${fontSize.secondaryRegular}`
+})}
   margin-bottom: 10px;
   color: ${colors.primaryBlueGrey};
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     ${elemSize({ h: '20px' })}
     margin-top: 48px;
   }
@@ -138,8 +152,11 @@ export const DotIcon = styled.img`
 export const Location = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'center', ai: 'center' })}
   ${elemSize({ h: '35px' })}
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: ` ${fontSize.size_3}` })}
-  @media (max-width: 1100px) {
+  ${elemFonts({
+  fw: `${fontWeight.bold}`,
+  fs: ` ${fontSize.secondaryRegular}`
+})}
+  @media (max-width: 1150px) {
     ${elemSize({ h: '20px' })}
     margin-top: 33px;
     margin-bottom: 87px;

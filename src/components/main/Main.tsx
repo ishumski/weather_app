@@ -7,11 +7,9 @@ import {
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
-import ForecastSingleItem from '../forecast-single-item'
-import ForecastInfo from '../../common/forecast-info'
-import DetailedForecastInfo from '../../common/detailed-forecast-info'
+import ForecastSingleItem from '../forecast-single-item/ForecastSingleItem'
 import { changeCelsiusToFahrenheit, setWindDirection } from '../../utils'
-import HumidityBar from '../../common/humidity-bar'
+import HumidityBar from '../humidity-bar/HumidityBar'
 import WindStatusIcon from '../../assets/images/navigation.svg'
 import {
   Body,
@@ -33,6 +31,7 @@ import CelsiusIcon from '../../common/icons/celsius'
 import Badge from '../../common/badge'
 import { colors } from '../../assets/styles/colors'
 import FahrenheitIcon from '../../common/icons/fahrenheit'
+import ForecastInfo from '../forecast-info/ForecastInfo'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
@@ -132,6 +131,8 @@ const Main: React.FC = (): JSX.Element => {
 
                 return (
                   <ForecastSingleItem
+                    width="120px"
+                    height="177px"
                     key={id}
                     applicable_date={idx === 0 ? 'Tomorrow' : dateString}
                     id={id}
@@ -154,7 +155,10 @@ const Main: React.FC = (): JSX.Element => {
         <Body>
           <Hightlights>{`Today's Hightlights`}</Hightlights>
           <DetailedForecast>
-            <DetailedForecastInfo
+            <ForecastInfo
+              width="328px"
+              height="204px"
+              mb="48px"
               title="Wind Status"
               value={parseFloat(wind_speed.toFixed(1))}
               text="mph"
@@ -169,7 +173,10 @@ const Main: React.FC = (): JSX.Element => {
                 </WindDirection>
               }
             />
-            <DetailedForecastInfo
+            <ForecastInfo
+              width="328px"
+              height="204px"
+              mb="48px"
               title="Humidity"
               value={humidity}
               text="%"
@@ -180,11 +187,15 @@ const Main: React.FC = (): JSX.Element => {
               }
             />
             <ForecastInfo
+              width="328px"
+              height="159px"
               title="Visibility"
               value={parseFloat(visibility.toFixed(1))}
               text="miles"
             />
             <ForecastInfo
+              width="328px"
+              height="159px"
               title={'Air Pressure'}
               value={air_pressure}
               text="mb"

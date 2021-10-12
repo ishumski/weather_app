@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { fontSize, fontWeight } from '../assets/styles/fonts'
-import { colors } from '../assets/styles/colors'
-import { elemFonts, elemPlacement, elemSize } from '../assets/styles/mixins'
+import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import { colors } from '../../assets/styles/colors'
+import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 
 const HumidityBarContainer = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column' })}
@@ -10,7 +10,7 @@ const HumidityBarContainer = styled.div`
 
 const BarValue = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'space-between' })}
-  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.size_1}` })}
+  ${elemFonts({ fw: `${fontWeight.bold}`, fs: `${fontSize.small}` })}
   margin-bottom: 2px;
   color: ${colors.secondaryLightgrey};
 `
