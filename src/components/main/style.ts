@@ -13,7 +13,7 @@ export const Forecast = styled.div`
   ${elemSize({ w: '100%', maxw: '704px' })}
   padding: 42px 25px 25px;
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1175px) {
     ${elemSize({ maxw: '328px' })}
     padding: 25px 23px 10px;
   }
@@ -23,7 +23,7 @@ export const TempContainer = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'flex-end' })}
   margin-bottom: 66px;
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1175px) {
     ${elemPlacement({ dp: 'none' })}
   }
 `
@@ -49,7 +49,7 @@ export const WindStatusBadge: any = styled.img`
 export const ConsolidatedWeatherInfo = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'space-between' })}
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1175px) {
     ${elemPlacement({ dp: 'flex', jc: 'space-between', fw: 'wrap' })}
     margin: 0 30px;
   }
@@ -60,7 +60,7 @@ export const Header = styled.div`
   ${elemSize({ h: '283px' })}
   margin-bottom: 72px;
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1175px) {
     ${elemSize({ h: '580px' })}
     margin-bottom: 51px;
   }
@@ -79,9 +79,17 @@ export const AditionalInfo = styled.div`
 `
 
 export const Hightlights = styled.h1`
-  ${elemFonts({ fw: ` ${fontWeight.bold}`, fs: ` ${fontSize.primaryIncreased}` })}
+  ${elemFonts({
+  fw: ` ${fontWeight.bold}`,
+  fs: ` ${fontSize.primaryIncreased}`
+})}
   color: ${colors.primaryLightgrey};
 `
+
+export const WindDirectionCompas = styled.p`
+  ${elemSize({ w: '38px' })}
+`
+
 export const CreatedBy = styled.p`
   ${elemFonts({ fw: ` ${fontWeight.normal}`, fs: ` ${fontSize.small}` })}
   margin-bottom: 25px;

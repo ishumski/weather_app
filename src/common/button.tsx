@@ -17,7 +17,7 @@ export const CustomButton: any = styled.button`
 interface ButtonProps {
   buttonLabel?: string
   className?: string
-  onClick?: any
+  onClick?: React.MouseEventHandler
 }
 
 const Button = ({
@@ -25,7 +25,7 @@ const Button = ({
   className,
   onClick
 }: ButtonProps): JSX.Element => (
-  <CustomButton onClick={onClick} className={className}>
+  <CustomButton type="button" onClick={onClick} className={className}>
     {buttonLabel}
   </CustomButton>
 )

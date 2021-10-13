@@ -1,20 +1,20 @@
 import styled from 'styled-components'
-import SearchIcon from '../../assets/images/search.svg'
 import Button from '../../common/button'
 import { colors } from '../../assets/styles/colors'
+import { fontSize, fontWeight } from '../../assets/styles/fonts'
 import {
   elemFonts,
   elemPlacement,
   elemPosition,
   elemSize
 } from '../../assets/styles/mixins'
-import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import SearchIcon from '../../assets/images/search.svg'
 
 export const SidebarSearchContainer = styled.div`
   ${elemPosition({ pt: 'absolute', t: '0', b: '0', l: '0', r: '0' })}
   padding: 19.21px 46px 0px 47px;
   background: ${colors.secondaryDarkBlue};
-  @media (max-width: 1150px){
+  @media (max-width: 1175px) {
     padding: 18px 11px;
   }
 `
@@ -27,9 +27,11 @@ export const SearchLocation = styled.form`
   ${elemPlacement({ dp: 'flex' })}
   ${elemSize({ h: '48px' })}
   margin-top: 45.21px;
+  margin-bottom: 58px;
 
-  @media (max-width: 1150px){
+  @media (max-width: 1175px) {
     margin-top: 29.41px;
+    margin-bottom: 38px;
   }
 `
 

@@ -12,7 +12,7 @@ const CardContainer: any = styled.div`
   color: ${colors.primaryLightgrey};
   background: ${colors.secondaryDarkBlue};
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1175px) {
     margin-bottom: 32px;
   }
 `

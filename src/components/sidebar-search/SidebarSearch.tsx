@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import Badge from '../../common/badge'
 import { getForecast } from '../../api'
+import Badge from '../../common/badge'
+import SearchHistorySingleItem from '../search-history-single-item/SearchHistorySingleItem'
 import { getParameterByCityName } from '../../utils'
 import CloseIcon from '../../assets/images/close.svg'
 import { colors } from '../../assets/styles/colors'
@@ -13,25 +14,46 @@ import {
   SidebarSearchContainer
 } from './style'
 
-const SidebarSearch = ({ handleCloseModal }: any) => {
+interface SidebarSearchProps {
+  handleCloseModal: () => void
+}
+
+const SidebarSearch = ({ handleCloseModal }: SidebarSearchProps) => {
   const [cityName, setCityName] = useState<string>('')
+  const [cityHistory, setCityHistory] = useState<Array<string>>([])
 
   const dispatch = useDispatch()
 
-  const handleCitySearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  useEffect((): void => {
+    const getCityData: string | null = localStorage.getItem('cityData')
+    const historyCityData: Array<string> =
+      getCityData === null ? [] : JSON.parse(getCityData)
+    setCityHistory(historyCityData)
+  }, [])
 
+  const handleCitySearch = () => {
     if (!cityName) {
       return
     } else {
+      handleCloseModal()
       dispatch(getForecast(getParameterByCityName(cityName)))
+      setCityHistory([cityName, ...cityHistory].splice(0, 9))
+      localStorage.setItem(
+        'cityData',
+        JSON.stringify([cityName, ...cityHistory].splice(0, 9))
+      )
       setCityName('')
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = e.target
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = event.target
     setCityName(value)
+  }
+
+  const handleForecastSearchByCurrentCity = (param: string) => {
+    handleCloseModal()
+    dispatch(getForecast(getParameterByCityName(param)))
   }
 
   return (
@@ -50,6 +72,17 @@ const SidebarSearch = ({ handleCloseModal }: any) => {
         />
         <SearchLocationButton buttonLabel="Search" onClick={handleCitySearch} />
       </SearchLocation>
+      {cityHistory?.length
+        ? cityHistory.map((elem: string, idx: number) => {
+            return (
+              <SearchHistorySingleItem
+                key={idx}
+                city={elem}
+                onClick={() => handleForecastSearchByCurrentCity(elem)}
+              />
+            )
+          })
+        : null}
     </SidebarSearchContainer>
   )
 }
