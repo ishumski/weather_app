@@ -6,10 +6,21 @@ const initialState: ForecastInitialState = {
     title: '',
     consolidated_weather: [
       {
+        air_pressure: 0,
+        applicable_date: '2021-09-22',
+        created: '2021-09-22T11:43:40.053870Z',
+        humidity: 0,
+        id: 0,
+        max_temp: 0,
+        min_temp: 0,
+        predictability: 0,
+        the_temp: 0,
+        visibility: 0,
+        weather_state_abbr: 'hr',
         weather_state_name: '',
-        weather_state_abbr: '',
-        applicable_date: '',
-        the_temp: 0
+        wind_direction: 0,
+        wind_direction_compass: '',
+        wind_speed: 0
       }
     ]
   }

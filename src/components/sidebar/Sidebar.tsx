@@ -1,42 +1,45 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { RootState } from '../../store/root-reducer'
-import { getForecastByCoords, getForecastByGeolocationUrl } from '../../api'
+import { getForecast } from '../../api'
+import { getParameterByCoords } from '../../utils'
 import {
   ConsolidatedWeather,
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
-import ShowCurrentDate from '../show-current-date'
-
+import Button from '../../common/button'
+import Badge from '../../common/badge'
+import ShowCurrentDate from '../show-current-date/ShowCurrentDate'
 import CloudIcon from '../../assets/images/cloudy.png'
 import GeopositionIcon from '../../assets/images/geoposition.svg'
-import CelsiusIcon from '../../assets/images/celsius.svg'
 import LocationIcon from '../../assets/images/location.svg'
 import Dot from '../../assets/images/dot.svg'
-
+import { colors } from '../../assets/styles/colors'
 import {
   SidebarContaner,
   Header,
-  SearchButton,
-  GeopositionBadge,
   Body,
   SmallCloud,
   MediumCloudRight,
   MediumCloudLeft,
   LargeCloud,
   Temperature,
+  CelsiusIcon,
   WeatherStateName,
   Footer,
   CurrentDate,
   DotIcon,
   Location,
   LocationTitle,
+  TempValue,
   WeatherIcon
 } from './style'
+import SidebarSearch from '../sidebar-search/SidebarSearch'
 
 const Sidebar: React.FC = (): JSX.Element => {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+
   const dispatch = useDispatch()
 
   useEffect((): void => {
@@ -49,9 +52,7 @@ const Sidebar: React.FC = (): JSX.Element => {
         const fixedLongitude: number = parseFloat(longitude.toFixed(2))
 
         dispatch(
-          getForecastByGeolocationUrl(
-            getForecastByCoords(fixedLatitude, fixedLongitude)
-          )
+          getForecast(getParameterByCoords(fixedLatitude, fixedLongitude))
         )
       }
     )
@@ -70,11 +71,16 @@ const Sidebar: React.FC = (): JSX.Element => {
 
   const fixedTemp: number = parseFloat(the_temp.toFixed(1))
 
+  const handleOpenModal = () => setIsModalVisible(true)
+  const handleCloseModal = () => setIsModalVisible(false)
+
   return (
     <SidebarContaner>
       <Header>
-        <SearchButton buttonLabel="Search for places"></SearchButton>
-        <GeopositionBadge icon={GeopositionIcon}></GeopositionBadge>
+        <Button buttonLabel="Search for places" onClick={handleOpenModal} />
+        <Badge background={colors.whiteOpacity}>
+          <img src={GeopositionIcon} alt="geoposition-icon" />
+        </Badge>
       </Header>
       <Body>
         <SmallCloud src={CloudIcon} alt="small-cloud-icon" />
@@ -86,8 +92,8 @@ const Sidebar: React.FC = (): JSX.Element => {
           alt="weather-icon"
         />
         <Temperature>
-          {fixedTemp}
-          <img src={CelsiusIcon} alt="celsius-icon" />
+          <TempValue> {fixedTemp}</TempValue>
+          <CelsiusIcon>°C</CelsiusIcon>
         </Temperature>
         <WeatherStateName>{weather_state_name}</WeatherStateName>
       </Body>
@@ -102,6 +108,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           <LocationTitle>{title}</LocationTitle>
         </Location>
       </Footer>
+      {isModalVisible && <SidebarSearch handleCloseModal={handleCloseModal} />}
     </SidebarContaner>
   )
 }
