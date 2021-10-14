@@ -1,29 +1,6 @@
 import { ReactElement } from 'react'
-import styled from 'styled-components'
-import { fontSize, fontWeight } from '../../assets/styles/fonts'
-import { elemFonts, elemPlacement, elemSize } from '../../assets/styles/mixins'
 import Card from '../../common/card'
-
-const ForecastValue = styled.div`
-  ${elemPlacement({ dp: 'flex', ai: 'baseline' })}
-  margin-bottom: 20px;
-`
-
-const Value = styled.div`
-  ${elemFonts({ fw: `${fontWeight.bolder}`, fs: `${fontSize.huge}` })}
-  margin-right: 15px;
-`
-
-const Text = styled.span`
-  ${elemFonts({
-    fw: `${fontWeight.bold}`,
-    fs: `${fontSize.secondaryIncreased}`
-  })}
-`
-
-const AdditionalInfo = styled.div`
-  ${elemSize({ w: '100%', maxw: '229px' })}
-`
+import { AdditionalInfo, ForecastValue, Text, Value } from './style'
 
 interface ForecastInfoProps {
   height?: string

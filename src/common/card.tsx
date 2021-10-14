@@ -25,6 +25,7 @@ interface CardProps {
   height?: string
   width?: string
   mb?: string
+  id?: number
   content?: ReactElement
   title?: string
   cardInfo?: ReactElement
@@ -34,12 +35,13 @@ const Card = ({
   height,
   width,
   mb,
+  id,
   content,
   title,
   cardInfo
 }: CardProps): JSX.Element => {
   return (
-    <CardContainer width={width} height={height} mb={mb}>
+    <CardContainer width={width} height={height} mb={mb} id={id}>
       <Title>{title}</Title>
       <div>{content}</div>
       {cardInfo ? <div>{cardInfo}</div> : null}

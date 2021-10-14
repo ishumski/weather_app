@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/root-reducer'
 import { getForecast } from '../../api'
-import { getParameterByCoords } from '../../utils'
 import {
   ConsolidatedWeather,
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
-import Button from '../../common/button'
-import Badge from '../../common/badge'
-import ShowCurrentDate from '../show-current-date/ShowCurrentDate'
-import CloudIcon from '../../assets/images/cloudy.png'
-import GeopositionIcon from '../../assets/images/geoposition.svg'
-import LocationIcon from '../../assets/images/location.svg'
+import ShowCurrentDate from '../../components/show-current-date/ShowCurrentDate'
+import SidebarSearch from './sidebar-search/SidebarSearch'
+import Button from '../button'
+import Badge from '../badge'
 import Dot from '../../assets/images/dot.svg'
+import LocationIcon from '../../assets/images/location.svg'
+import GeopositionIcon from '../../assets/images/geoposition.svg'
+import CloudIcon from '../../assets/images/cloudy.png'
+import { getParameterByCoords } from '../../utils/utils'
 import { colors } from '../../assets/styles/colors'
 import {
   SidebarContaner,
@@ -35,7 +36,6 @@ import {
   TempValue,
   WeatherIcon
 } from './style'
-import SidebarSearch from '../sidebar-search/SidebarSearch'
 
 const Sidebar: React.FC = (): JSX.Element => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)

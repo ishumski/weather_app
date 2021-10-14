@@ -1,3 +1,3 @@
-export enum forecastDataConstance {
+export enum forecastDataActions {
     SET_CURRENT_LOCATION_FORECAST = "SET_CURRENT_LOCATION_FORECAST"
 }

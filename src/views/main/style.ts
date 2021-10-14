@@ -66,16 +66,12 @@ export const Header = styled.div`
   }
 `
 
-export const Body = styled.div`
+export const Wrapper = styled.div`
   ${elemPlacement({ dp: 'flex', fd: 'column' })}
 `
 
 export const DetailedForecast = styled.div`
   ${elemPlacement({ dp: 'flex', jc: 'space-between', fw: 'wrap' })}
-`
-
-export const AditionalInfo = styled.div`
-  ${elemPlacement({ dp: 'flex', fd: 'column' })}
 `
 
 export const Hightlights = styled.h1`

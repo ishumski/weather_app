@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import Button from '../../common/button'
-import { colors } from '../../assets/styles/colors'
-import { fontSize, fontWeight } from '../../assets/styles/fonts'
+import Button from '../../button'
+import { colors } from '../../../assets/styles/colors'
+import { fontSize, fontWeight } from '../../../assets/styles/fonts'
 import {
   elemFonts,
   elemPlacement,
   elemPosition,
   elemSize
-} from '../../assets/styles/mixins'
-import SearchIcon from '../../assets/images/search.svg'
+} from '../../../assets/styles/mixins'
+import SearchIcon from '../../../assets/images/search.svg'
 
 export const SidebarSearchContainer = styled.div`
   ${elemPosition({ pt: 'absolute', t: '0', b: '0', l: '0', r: '0' })}

@@ -7,12 +7,16 @@ import {
   ForecastData,
   ForecastInitialState
 } from '../../types/interfaces'
-import ForecastSingleItem from '../forecast-single-item/ForecastSingleItem'
-import HumidityBar from '../humidity-bar/HumidityBar'
+import ForecastSingleItem from '../../components/forecast-single-item/ForecastSingleItem'
+import HumidityBar from '../../components/humidity-bar/HumidityBar'
+import ForecastInfo from '../../components/forecast-info/ForecastInfo'
+import Badge from '../../common/badge'
+import CelsiusIcon from '../../common/icons/celsius'
+import FahrenheitIcon from '../../common/icons/fahrenheit'
 import WindStatusIcon from '../../assets/images/navigation.svg'
-import { changeCelsiusToFahrenheit } from '../../utils'
+import { changeCelsiusToFahrenheit } from '../../utils/utils'
+import { colors } from '../../assets/styles/colors'
 import {
-  Body,
   ConsolidatedWeatherInfo,
   DetailedForecast,
   Forecast,
@@ -22,17 +26,11 @@ import {
   TempBadgets,
   Hightlights,
   WindStatusBadge,
-  AditionalInfo,
   WindDirection,
   CreatedBy,
-  WindDirectionCompas
+  WindDirectionCompas,
+  Wrapper
 } from './style'
-import CelsiusIcon from '../../common/icons/celsius'
-
-import Badge from '../../common/badge'
-import { colors } from '../../assets/styles/colors'
-import FahrenheitIcon from '../../common/icons/fahrenheit'
-import ForecastInfo from '../forecast-info/ForecastInfo'
 
 const Main: React.FC = (): JSX.Element => {
   const { forecastData }: ForecastInitialState = useSelector(
@@ -154,7 +152,7 @@ const Main: React.FC = (): JSX.Element => {
               })}
           </ConsolidatedWeatherInfo>
         </Header>
-        <Body>
+        <Wrapper>
           <Hightlights>{`Today's Hightlights`}</Hightlights>
           <DetailedForecast>
             <ForecastInfo
@@ -185,9 +183,9 @@ const Main: React.FC = (): JSX.Element => {
               value={humidity}
               text="%"
               additionalInfo={
-                <AditionalInfo>
+                <Wrapper>
                   <HumidityBar width={humidity} />
-                </AditionalInfo>
+                </Wrapper>
               }
             />
             <ForecastInfo
@@ -205,7 +203,7 @@ const Main: React.FC = (): JSX.Element => {
               text="mb"
             />
           </DetailedForecast>
-        </Body>
+        </Wrapper>
         <CreatedBy>created by ishumski - devChallenges.io</CreatedBy>
       </Forecast>
     </MainContainer>

@@ -1,27 +1,12 @@
-import styled from 'styled-components'
 import Card from '../../common/card'
-import { colors } from '../../assets/styles/colors'
-import { elemPlacement, elemSize } from '../../assets/styles/mixins'
-
-const ItemIcon = styled.img`
-  ${elemSize({ w: '55px', h: '60px' })}
-`
-
-const TemperatureValue = styled.div`
-  ${elemPlacement({ dp: 'flex' })};
-`
-
-const MinTempValue = styled.p`
-  color: ${colors.secondaryLightgrey};
-  margin-left: 15px;
-`
+import { ItemIcon, MinTempValue, TemperatureValue } from './style'
 
 interface ForecastSingleItemProps {
   height: string
   width: string
   max_temp: number | string
   min_temp: number | string
-  id: number
+  id?: number
   weather_state_abbr: string
   applicable_date: string | number
 }
@@ -39,6 +24,7 @@ const ForecastSingleItem = ({
     <Card
       height={height}
       width={width}
+      id={id}
       content={<ItemIcon src={weather_state_abbr} alt="forecast-icon" />}
       title={applicable_date.toLocaleString()}
       cardInfo={

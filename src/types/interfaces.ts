@@ -1,4 +1,4 @@
-import { forecastDataConstance } from "../store/forecast-data/types";
+import { forecastDataActions } from "../store/forecast-data/types";
 import { Action as ReduxAction } from "redux";
 
 export interface ForecastInitialState {
@@ -28,7 +28,7 @@ export interface ConsolidatedWeather {
     wind_speed: number
 }
 
-export interface SetForecastAction extends ReduxAction { type: typeof forecastDataConstance.SET_CURRENT_LOCATION_FORECAST, payload: ForecastData; }
+export interface SetForecastAction extends ReduxAction { type: typeof forecastDataActions.SET_CURRENT_LOCATION_FORECAST, payload: ForecastData; }
 
 export interface CurrentLocationData {
     distance: number,

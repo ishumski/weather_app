@@ -8,7 +8,7 @@ export const getParameterByCityName = (city: string) => {
     return currentGeolocationByCity
 }
 
-export const changeCelsiusToFahrenheit = (t: number) => {
-    const changedToFahrenheit: number = parseFloat(((t * 9) / 5 + 32).toFixed(1))
+export const changeCelsiusToFahrenheit = (temperature: number) => {
+    const changedToFahrenheit: number = parseFloat(((temperature * 9) / 5 + 32).toFixed(1))
     return changedToFahrenheit
 }

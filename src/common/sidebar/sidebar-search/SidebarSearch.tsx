@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getForecast } from '../../api'
-import Badge from '../../common/badge'
-import SearchHistorySingleItem from '../search-history-single-item/SearchHistorySingleItem'
-import { getParameterByCityName } from '../../utils'
-import CloseIcon from '../../assets/images/close.svg'
-import { colors } from '../../assets/styles/colors'
+import { getForecast } from '../../../api'
+import SearchHistorySingleItem from '../../../components/search-history-single-item/SearchHistorySingleItem'
+import Badge from '../../badge'
+import CloseIcon from '../../../assets/images/close.svg'
+import { getParameterByCityName } from '../../../utils/utils'
+import { colors } from '../../../assets/styles/colors'
 import {
   Header,
   SearchLocation,

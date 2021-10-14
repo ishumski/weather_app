@@ -3,6 +3,7 @@ interface FontWeight {
     bold: string
     bolder: string
 }
+
 interface FontSize {
     small: string
     primaryRegular: string
