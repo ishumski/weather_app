@@ -4,9 +4,10 @@ import { Provider } from 'react-redux'
 import store from './store/store'
 import styled from 'styled-components'
 import Main from './views/main/Main'
-import Sidebar from './common/sidebar/Sidebar'
+
 import GlobalStyle from './assets/styles/global-styles'
 import { elemPlacement, elemSize } from './assets/styles/mixins'
+import Sidebar from './components/sidebar/Sidebar'
 
 const AppContainer: any = styled.div`
   ${elemPlacement({ dp: 'flex' })}

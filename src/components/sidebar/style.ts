@@ -10,7 +10,6 @@ import {
 
 export const SidebarContaner = styled.div`
   ${elemPlacement({ fl: '0.3', dp: 'flex', fd: 'column', ai: 'center' })}
-  ${elemSize({ minw: '375px' })}
   ${elemPosition({ pt: 'relative' })}
   padding: 42px 46px 52px;
   color: ${colors.primaryLightgrey};
@@ -98,9 +97,8 @@ export const Temperature = styled.div`
 `
 
 export const CelsiusIcon = styled.p`
-  ${elemFonts({ fs: `${fontSize.large}` })}
+  ${elemFonts({ fw: `${fontWeight.normal}`, fs: `${fontSize.large}` })}
   margin: 0px;
-  font-family: Calibri;
   color: ${colors.secondaryLightgrey};
 `
 
@@ -115,7 +113,7 @@ export const WeatherStateName = styled.h3`
   fw: `${fontWeight.bold}`,
   fs: `${fontSize.secondaryIncreased}`
 })}
-  margin-top: 87px;
+  margin-top: 60px;
   color: ${colors.secondaryLightgrey};
 
   @media (max-width: 1175px) {

@@ -8,9 +8,9 @@ import {
   ForecastInitialState
 } from '../../types/interfaces'
 import ShowCurrentDate from '../../components/show-current-date/ShowCurrentDate'
-import SidebarSearch from './sidebar-search/SidebarSearch'
-import Button from '../button'
-import Badge from '../badge'
+import Button from '../../common/button'
+import Badge from '../../common/badge'
+import SidebarSearch from '../../common/sidebar-search/SidebarSearch'
 import Dot from '../../assets/images/dot.svg'
 import LocationIcon from '../../assets/images/location.svg'
 import GeopositionIcon from '../../assets/images/geoposition.svg'

@@ -79,6 +79,7 @@ export const Hightlights = styled.h1`
   fw: ` ${fontWeight.bold}`,
   fs: ` ${fontSize.primaryIncreased}`
 })}
+  margin: 0px 0px 32px 0px;
   color: ${colors.primaryLightgrey};
 `
 
@@ -90,5 +91,6 @@ export const CreatedBy = styled.p`
   ${elemFonts({ fw: ` ${fontWeight.normal}`, fs: ` ${fontSize.small}` })}
   margin-bottom: 25px;
   text-align: center;
+  margin-top: 60px;
   color: ${colors.primaryLightgrey};
 `
